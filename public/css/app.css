@@ -11271,9 +11271,6 @@ select {
 .h-20 {
 	height: 5rem;
 }
-.h-full {
-	height: 100%;
-}
 .min-h-screen {
 	min-height: 100vh;
 }
@@ -11734,9 +11731,6 @@ select {
 }
 .leading-4 {
 	line-height: 1rem;
-}
-.leading-none {
-	line-height: 1;
 }
 .tracking-widest {
 	letter-spacing: 0.1em;

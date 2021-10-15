@@ -15,7 +15,9 @@ mix.js('resources/js/app.js', 'public/js').vue()
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
-    ]).sass('resources/sass/app.scss', 'public/css')
+    ]).sass('resources/sass/app.scss', 'public/css').browserSync({
+        proxy: 'http://localhost:8000',
+    })
     .sourceMaps()
     .webpackConfig(require('./webpack.config'));
 
