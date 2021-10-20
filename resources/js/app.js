@@ -10,15 +10,15 @@ import {
 import {
     InertiaProgress
 } from '@inertiajs/progress';
-import {
-    ZiggyVue
-} from 'ziggy';
-import {
-    Ziggy
-} from './ziggy';
-import App from './App';
+// import {
+//     ZiggyVue
+// } from 'ziggy';
+// import {
+//     Ziggy
+// } from './ziggy';
+// import App from './App';
 
-const appName = window.document.getElementsByTagName('title')[0] ? .innerText || 'Laravel';
+const appName = window.document.getElementsByTagName('title')[0].innerText || 'Laravel';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
