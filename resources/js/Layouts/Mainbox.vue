@@ -13,7 +13,7 @@ export default {
 .container {
   width: 1920px;
   height: 1080px;
-  background: url("../../img/bg.png") no-repeat;
+  // background: url("../../img/bg.png") no-repeat;
   animation: fade-in 3.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
