@@ -1,31 +1,94 @@
 <template>
-    <div>
+    <div class="total">
         <Head :title="title" />
 
         <jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+        <div class="min-h-screen ">
+     
+            <nav class="d-flex navbar navbar-expand-md navbar-dark bg-dark text-gray-200 sticky-top">
                 <!-- Primary Navigation Menu -->
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex justify-between h-16">
-                        <div class="flex">
+             <div class="container-fluid">
+        <a class="navbar-brand" :href="route('dashboard')" :active="route().current('dashboard')">Navbar</a>
+       
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor02"
+          aria-controls="navbarColor02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02 ">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#"
+                >Home
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" :href="route('mypage')" :active="route().current('mypage')">chart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <div class="dropdown show mr-2 ml-2">
+                    <a
+                        class="btn btn-secondary dropdown-toggle"
+                        href="#"
+                        role="button"
+                        id="dropdownMenuLink"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                        Dropdown link
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-sm-2" type="text" placeholder="Search" />
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-dark">
+                    <div class="flex justify-between h-16  bg-dark">
+                        
+                        <div class="flex  bg-dark">
+                            
                             <!-- Logo -->
-                            <div class="flex-shrink-0 flex items-center">
+
+                            <!-- <div class="flex-shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
                                     <jet-application-mark class="block h-9 w-auto" />
                                 </Link>
-                            </div>
+                            </div> -->
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+
+                            <!-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
-                            </div>
+                            </div> -->
+                            
                         </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        <div class="hidden sm:flex sm:items-center sm:ml-6 ">
                             <div class="ml-3 relative">
                                 <!-- Teams Dropdown -->
                                 <jet-dropdown align="right" width="60" v-if="$page.props.jetstream.hasTeamFeatures">
@@ -82,7 +145,7 @@
                             </div>
 
                             <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
+                            <div class="ml-3 relative ">
                                 <jet-dropdown align="right" width="48">
                                     <template #trigger>
                                         <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -100,9 +163,10 @@
                                         </span>
                                     </template>
 
-                                    <template #content>
+                                    <template #content >
+                                       
                                         <!-- Account Management -->
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
+                                        <div class="block px-4 py-2 text-xs text-gray-400 ">
                                             Manage Account
                                         </div>
 
@@ -138,6 +202,7 @@
                         </div>
                     </div>
                 </div>
+                
 
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
@@ -215,9 +280,10 @@
                     </div>
                 </div>
             </nav>
+         
 
             <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
+            <header class="shadow"  v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header"></slot>
                 </div>
@@ -227,7 +293,10 @@
             <main>
                 <slot></slot>
             </main>
+
+            
         </div>
+        
     </div>
 </template>
 
@@ -240,6 +309,7 @@
     import JetNavLink from '@/Jetstream/NavLink.vue'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
+    import Navbar from "@/Layouts/Navbar.vue";
 
     export default defineComponent({
         props: {
@@ -255,6 +325,7 @@
             JetNavLink,
             JetResponsiveNavLink,
             Link,
+            Navbar
         },
 
         data() {
@@ -277,4 +348,13 @@
             },
         }
     })
+    
 </script>
+<style lang="scss">
+.total{
+       background-color: rgb(24, 26, 27);
+}
+.shadow{
+      background-color: rgb(30, 32, 34);
+}
+</style>

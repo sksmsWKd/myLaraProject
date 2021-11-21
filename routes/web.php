@@ -31,7 +31,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/mypage', function () {
     return Inertia::render('Mypage');
-});
+})->name('mypage');
+
+
 
 // Route::get('file-import-export', [UserController::class, 'fileImportExport']);
 // Route::post('file-import', [UserController::class, 'fileImport'])->name('file-import');
