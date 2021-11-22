@@ -2,7 +2,7 @@
     <app-layout title="Dashboard">
          <template #header>
       <h2 class="font-semibold text-xl text-gray-200 leading-tight">
-        Dashboard
+        mypage
       </h2>
           </template>
         <!-- <mainbox></mainbox> -->
@@ -26,8 +26,8 @@
     import Navbar from "@/Layouts/Navbar.vue";
     import Mainbox from "@/Layouts/Mainbox.vue";
     import {Chart, registerables} from 'chart.js';
-import { defineComponent } from "vue";
-import AppLayout from "@/Layouts/AppLayout.vue";
+    import { defineComponent } from "vue";
+    import AppLayout from "@/Layouts/AppLayout.vue";
     Chart.register(...registerables);
 
     export default {
@@ -48,7 +48,8 @@ import AppLayout from "@/Layouts/AppLayout.vue";
                 this
                     .myChart
                     .update();
-                //변경누르면에러
+                    
+                
 
             },
             //   applyChange(){   this.myChart.update();    },
@@ -58,15 +59,25 @@ import AppLayout from "@/Layouts/AppLayout.vue";
                     .getElementById('chart')
                     .getContext('2d');
                 this.myChart = new Chart(ctx, {
-                    type: 'polarArea',
+                    type: 'bar',
                     data: {
                         labels: [
-                            'Red',
-                            'Blue',
-                            'Yellow',
-                            'Green',
-                            'Purple',
-                            'Orange'
+                            '서울',
+                            '부산',
+                            '대구',
+                            '인천',
+                            '광주',
+                            '대전',
+                            '울산',
+                            '세종',
+                            '강원',
+                            '충북',
+                            '충남',
+                            '전북',
+                            '전남',
+                            '경북',
+                            '경남',
+                            '제주'
                         ],
                         datasets: [
                             {
@@ -77,7 +88,18 @@ import AppLayout from "@/Layouts/AppLayout.vue";
                                     3,
                                     5,
                                     2,
-                                    3
+                                    3,
+                                      12,
+                                    19,
+                                    3,
+                                    5,
+                                    2,
+                                    3,
+                                      12,
+                                    19,
+                                    3,
+                                    5,
+                                    
                                 ],
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 0.2)',
@@ -85,7 +107,17 @@ import AppLayout from "@/Layouts/AppLayout.vue";
                                     'rgba(255, 206, 86, 0.2)',
                                     'rgba(75, 192, 192, 0.2)',
                                     'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
+                                    'rgba(255, 159, 64, 0.2)',
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)',
+                                      'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
                                 ],
                                 borderColor: [
                                     'rgba(255, 99, 132, 1)',
@@ -93,7 +125,17 @@ import AppLayout from "@/Layouts/AppLayout.vue";
                                     'rgba(255, 206, 86, 1)',
                                     'rgba(75, 192, 192, 1)',
                                     'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
+                                    'rgba(255, 159, 64, 1)',
+                                        'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                     'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
                                 ],
                                 borderWidth: 1
                             }

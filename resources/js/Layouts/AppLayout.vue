@@ -29,10 +29,10 @@
               <a class="nav-link active" href="#"
                 >Home
                 <span class="visually-hidden">(current)</span>
-              </a>
+              </a> 
             </li>
             <li class="nav-item">
-              <a class="nav-link" :href="route('mypage')" :active="route().current('mypage')">chart</a>
+              <a class="nav-link" :href="route('chart1')" :active="route().current('chart1')">chart1</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Pricing</a>
