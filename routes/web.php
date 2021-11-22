@@ -21,6 +21,7 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+
     ]);
 });
 
@@ -29,9 +30,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::get('/mypage', function () {
-    return Inertia::render('Mypage');
-})->name('mypage');
+Route::get('/chart1', function () {
+    return Inertia::render('Chart1');
+})->name('chart1');
 
 
 
