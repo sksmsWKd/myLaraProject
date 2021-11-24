@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,6 +34,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/chart1', function () {
     return Inertia::render('Chart1');
 })->name('chart1');
+
+Route::get('/index', [PostController::class, 'index'])->name('index');
 
 
 

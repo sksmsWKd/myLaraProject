@@ -23,11 +23,12 @@
 </template>
 
 <script>
-    import Navbar from "@/Layouts/Navbar.vue";
+    
     import Mainbox from "@/Layouts/Mainbox.vue";
     import {Chart, registerables} from 'chart.js';
     import { defineComponent } from "vue";
     import AppLayout from "@/Layouts/AppLayout.vue";
+    import Navbar from "@/Layouts/Navbar.vue";
     Chart.register(...registerables);
 
     export default {
