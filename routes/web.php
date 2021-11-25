@@ -35,6 +35,10 @@ Route::get('/chart1', function () {
     return Inertia::render('Chart1');
 })->name('chart1');
 
+Route::get('/map1', function () {
+    return Inertia::render('Map1');
+})->name('map1');
+
 Route::get('/index', [PostController::class, 'index'])->name('index');
 
 
