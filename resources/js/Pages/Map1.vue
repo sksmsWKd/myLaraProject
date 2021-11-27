@@ -12,14 +12,13 @@
 </template>
 
 <script>
-    // DON'T load Leaflet components here! Its CSS is needed though, if not imported
-    // elsewhere in your application.
+  
     import "leaflet/dist/leaflet.css"
     import {LMap, LGeoJson, LTileLayer, LCircle} from "@vue-leaflet/vue-leaflet";
     import {latLngBounds} from "leaflet"
     import geojsonfile from "./geojsonfile";
 
-    // let geodata = JSON.parse(geojsonfile);
+    
 
     export default {
         components: {
@@ -71,7 +70,7 @@
                     features: [geojsonfile]
                 },
                 geojsonOptions: {
-                    // Options that don't rely on Leaflet methods.
+                
                 }
             };
         }
