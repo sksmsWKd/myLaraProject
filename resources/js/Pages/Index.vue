@@ -2,7 +2,7 @@
     <app-layout title="index">
          <template #header>
       <h2 class="font-semibold text-xl text-gray-200 leading-tight">
-				Index  {{ age }}
+				데이터 -->> {{ age }}
       </h2>
           </template>
      
