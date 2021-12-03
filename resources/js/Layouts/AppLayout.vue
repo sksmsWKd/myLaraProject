@@ -32,7 +32,7 @@
               </a> 
             </li>
             <li class="nav-item">
-              <a class="nav-link" :href="route('chart1')" :active="route().current('chart1')">chart1</a>
+              <a class="nav-link" :href="route('chart')" :active="route().current('chart')">chart1</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" :href="route('index')" :active="route().current('index')">index</a>

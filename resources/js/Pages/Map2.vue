@@ -1,10 +1,60 @@
 <template>
-    <div id="map" style="width: 80%; height: 700px"></div>
+
+    <app-layout title="map2">
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-200 leading-tight ">
+                <div class="dropdown show float-sm-left mr-4 mb-4">
+                    <a
+                        class="btn btn-secondary dropdown-toggle"
+                        href="#"
+                        role="button"
+                        id="dropdownMenuLink"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                        일반범죄
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item">재산범죄</a>
+                        <a class="dropdown-item">강력범죄</a>
+                        <a class="dropdown-item">공무원범죄</a>
+                    </div>
+                </div>
+
+                 <div class="dropdown show float-sm-left mr-4 mb-4">
+                    <a
+                        class="btn btn-secondary dropdown-toggle"
+                        href="#"
+                        role="button"
+                        id="dropdownMenuLink"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                        강력범죄
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item">재산범죄</a>
+                        <a class="dropdown-item">강력범죄</a>
+                        <a class="dropdown-item">공무원범죄</a>
+                    </div>
+                </div>
+            </h2>
+        </template>
+
+        <div id="map" style="width: 80%; height: 700px"></div>
+
+    </app-layout>
+
 </template>
 <script>
     import geojsonfile from "./geojsonfile";
-
+    import AppLayout from "@/Layouts/AppLayout.vue";
     export default {
+        components: {
+            AppLayout
+        },
 
         mounted() {
 
@@ -81,6 +131,15 @@
                                 .LatLng(37.5820587276502, 126.97914178314467);
                             var inforegion = region;
 
+                            this
+                                .map
+                                .data
+                                .overrideStyle(feature, {
+                                    fillOpacity: 0.6,
+                                    strokeWeight: 4,
+                                    strokeOpacity: 1,
+                                    fillColor: '#f7e600'
+                                });
                             break;
                         case '인천광역시':
                             point = naver
@@ -133,8 +192,8 @@
                             point = naver
                                 .maps
                                 .LatLng(35.17686535594658, 126.85391604457695);
-                            var inforegion = region;
-
+                            // var inforegion = region;
+                            var inforegion = "외국입니다.";
                             break;
                         case '경기도':
 
@@ -211,10 +270,11 @@
                             break;
 
                     }
-                 
+
                     infowindow.setContent([
-                        '<div class="iw_inner" style="box-shadow: 20px 10px 33px #FF0000;">', '   <h3>' +
-                                inforegion + '</h3>',
+                        '<div class="iw_inner" style="border:2px solid gold ; box-shadow: 20px 10px 33p' +
+                                'x #FF0000;  background-color: #CCFFFF ">',
+                        '   <h3>' + inforegion + '</h3>',
                         '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
                         '       <br />',
                         '       02-120 | 공공,사회기관 &gt; 특별,광역시청<br />',
@@ -224,8 +284,6 @@
                     ].join(''));
                     //동적으로 데이터 받아와 infowindow 교체
 
-                 
-
                     if (infowindow.getMap()) {
                         infowindow.close();
                     } else {
@@ -233,7 +291,7 @@
                         infowindow.DEFAULT_OPTIONS.position = point;
                         infowindow.open(this.map, point);
                         console.log("오픈");
-                        console.log(infowindow);
+                        console.log(feature);
 
                     }
 
