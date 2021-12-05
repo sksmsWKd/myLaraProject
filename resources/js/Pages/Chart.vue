@@ -12,14 +12,14 @@
         
 
         <div class="selectBox">
-            <select id="selection" @change="changes()" style="background-color: rgb(24, 26, 27)">
+            <select id="selection" @change="changes()" class="land" style="background-color: rgb(24, 26, 27)">
                 <option value="0">범죄발생총건수</option>
                 <option value="1">인구수 소계</option>
                 <option value="2">10만명당 범죄발생수</option>
             </select>
             <!-- <button @click="applyChange()"> 변경 </button> -->
 
-            <select id="crime" @change="changes()" style="background-color: rgb(24, 26, 27)">
+            <select id="crime" @change="changes()" class="land" style="background-color: rgb(24, 26, 27)">
                 <option value="2014">2014</option>
                 <option value="2015">2015</option>
                 <option value="2016">2016</option>
@@ -32,10 +32,10 @@
 
                 
         </div>
- 
-<svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="500" preserveAspectRatio="none" viewBox="172 228 70 50"  >
+ <div id="info-box"></div>
+ <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="500" preserveAspectRatio="none" viewBox="172 228 70 50"  >
       <g name="서울" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgSeoul" >
-				<path data-name="Layer 0" style="z-index: index -1;" i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M183.5,256.583l1.188,4.667L183,263.083l1.375,3.792l2.938-1.313
+				<path class="land" style="z-index: index -1;" i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M183.5,256.583l1.188,4.667L183,263.083l1.375,3.792l2.938-1.313
 					l2.5-1.563l0.75,1l3.271,7.417l2.917-1.729l2.75,1.896l2.125,0.104l3.5-3.938l5.541,0.333l1.521,4.167l2.646,0.833L218.25,269
 					l0.75-0.75l3-0.167l0.084-0.25l3.75-4.583l-1.168-3v-0.5l0.334-1.5l3.834-2.833l-0.334-2.5l-0.834-1.667L224,250.917l-3.25,2
 					l-1.843-2.71l1.927-1.873l-0.168-3.917l-0.239-0.526l0.239,0.026l-3-5.333l-0.5-6l-3-0.333L214,232.604l-1.541,0.771
@@ -47,7 +47,7 @@
 
 			<svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="800" height="500" preserveAspectRatio="none" viewBox="132 238 80 50"  >
       <g name="인천"  i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgInchun" >
-				<path i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M174.667,265l-0.083-4.25l1.917-1.583v-0.75l0.583-4.833l3-4
+				<path class="land"  i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M174.667,265l-0.083-4.25l1.917-1.583v-0.75l0.583-4.833l3-4
 					l-0.583-0.5l-5.833-0.583l-1.47-0.817l0.137-0.183l-9.5-7l-2.5,4.5l-7.417,3.25l3.5,4.333l0.417,4.583L163,257.75l-4.25,0.667
 					l-0.083,2.75l1.793,0.249l-1.334,1.334l-2,1.313h-0.188l-0.188,2.25l-1.375,1.938l-0.063,2.125l1.063,0.938l1.438-1.188
 					l0.188,2.063l1.833,1.146l1.417,2.25l3.333,2.75l2.75,1.917l5.417,0.167L179,268.5l-1.75-1.25L174.667,265z"/>
@@ -56,7 +56,7 @@
 	
 <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="700" preserveAspectRatio="none" viewBox="112 100 300 300"  >
       <g name="경기" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgKyungi" >
-				<path i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M312.167,254.167l-6.334-5l-4-1.667h-8l-12.333-8.167l-6.167,3
+				<path class="land" i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M312.167,254.167l-6.334-5l-4-1.667h-8l-12.333-8.167l-6.167,3
 					L272.5,238l2.333-1.167l0.5-9.667l-4.833,0.667l0.333-3.833l2.833-3.333l-2.5-4.5l1.833-2.833l-0.833-4.667l6.667-6.333h2.833
 					l1-5.667l-2.167-2.833l-0.333-3.667l-8-0.333l0.333-6.333l-8.667-0.667l-0.667-1.5l-0.833-4.5l-1.667-10.167L259,165.5
 					l-1.167,1.667l-5.5-2l-3.667,2.667l-1.5,1.5l-2-3.5l-4.167-1l1.5-8.5L240.334,155L233,161.333l-3.971-3.654l0.138-3.346
@@ -83,7 +83,7 @@
 
 			<svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="700" preserveAspectRatio="none" viewBox="170 245 300 300"  >
       <g name="경기" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgKyungi" >
-		<path i:knockout="Off" fill="#872175" stroke="#FFFFFF" 	d="M409.5,324.333l-6.167,0.833l-8-4.833l-3.958,0.792l-7.208,0.375
+		<path class="land" i:knockout="Off" fill="#872175" stroke="#FFFFFF" 	d="M409.5,324.333l-6.167,0.833l-8-4.833l-3.958,0.792l-7.208,0.375
 					L380,315.333h-5.667l-6.166,2.5l-2.667-4.5l7.667-6.333l-0.334-2.333l-2.208-0.417l-5.792,2.25L362,303.333l-4.25-2.583
 					l-1.5,0.75l-4.25,4.25l-4.75-3L344,308l-8.75,1.75V307l-2.5-5.5l-5.25-1l-5.25,3.75l0.625,5.75l-0.125,3.125v0.375l-3.5,2.5
 					l-5-1l-7.75,2.75l-8.333-8.083l-5.542,8.833l-0.25,0.375L285,315.5l0.25,9.125l-3.417,1.542l0.167,2.667L279.834,328l-2.167,0.5
@@ -108,7 +108,7 @@
 
 <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="700" preserveAspectRatio="none" viewBox="55 315 300 300"  >
       <g name="충남" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svnChungnam" >
-		<path i:knockout="Off" fill="#B9B9B9" stroke="#FFFFFF" d="M287.167,484.5l-2.5-5.833l-3.5-3.334l1.5-3.5l-0.167-4l-0.667-4.666
+		<path class="land" i:knockout="Off" fill="#B9B9B9" stroke="#FFFFFF" d="M287.167,484.5l-2.5-5.833l-3.5-3.334l1.5-3.5l-0.167-4l-0.667-4.666
 					l-1.667-2.334h-3.833l-2.5-3l-4.667,1.334l-6.667,6.958l-2.833-2.625l-4.042-3.5l-0.375-5.875l-1.375-0.375l-1.708,2.417
 					L252.25,462l-3,4.125l-7.125-7.5l0.875-3.25l-6.25-3.125l1.625-1.625L239,446l0.125-0.375l1.375-2.25V434l2.75-3.25l3.875-0.125
 					l3.75-3.875l0.375-3.75l-0.375-3.875l2-2.125l-1.75-2.625l0.25-4.625l-3.25-3.5l-3.375-1.375v-4l-2-2.375l-1.25-3l2.75-1.875
@@ -134,7 +134,7 @@
 	
     <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="700" preserveAspectRatio="none" viewBox="135 70 400 400"  >
       <g name="강원" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgKangwon" >
-	<path i:knockout="Off" fill="#B9B9B9" stroke="#FFFFFF" d="M499.5,305.167l0.333-1.667l-0.833-2l2.833-1.667l-4.666-7.5
+	<path class="land" i:knockout="Off" fill="#B9B9B9" stroke="#FFFFFF" d="M499.5,305.167l0.333-1.667l-0.833-2l2.833-1.667l-4.666-7.5
 					L493,288.167l-3.167-1.333l-2.5-7.333l1.167-2.167l-8.167-5.5l-0.5-5.5l-3.5-3l-2.666-4.667l-4.5-6.167l2.166-2.5l-1.5-3.333
 					l-6.666-5L461,237.5c0,0,1.333-4.667,1.5-5.333S450,219.833,450,219.833h-1.667l0.334-3L439.5,207l-5.333-6.167l-0.5-4.333
 					l-2.167-1l-5.5-8l-1.333-3l-3.334-3.5L421,177.333L418.833,177l-5.166-5.5l-0.334-2.833l-7.166-8.5l-0.5-3.833l-0.167-3.667
@@ -158,7 +158,7 @@
 
 <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="500" preserveAspectRatio="none" viewBox="152 610 70 50"  >
       <g name="광주" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgGwangju" >
-				<path i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M207.334,628.25l1.5-1.417l-2.25-2.916L203.417,624l-2-1.917
+				<path class="land"  i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M207.334,628.25l1.5-1.417l-2.25-2.916L203.417,624l-2-1.917
 					l-1.75-4.416l-2.667-4L194.834,612l-3.333,2l-2.833,0.083l-2.583,2.667L181,619l-6.167-2.917l-0.25-2.666h-2.25l-1.75,6.166
 					l-4.417,0.584l-3.917,3.75l1.5,2.75l-2.25,1.75c0,0-0.25,5.582,0,5.916s2.917,2.167,2.917,2.167l9.083-0.167l3.083,3.834
 					l-0.583,2.25l1.75,1.333l5.5,0.25l3.25-2.417l5.25-1.333l3.917-1.75l3.833,3.167l1-1.5l3.583-1.667l2-3l2-3.167l-0.75-1.916
@@ -168,7 +168,7 @@
 
 <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="500" preserveAspectRatio="none" viewBox="225 415 70 70"  >
       <g name="대전" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgDaejeon" >
-			<path i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M275.667,433l-0.5-1.667L272,430.875L270.625,433l-2.125-3.625V429
+			<path class="land"  i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M275.667,433l-0.5-1.667L272,430.875L270.625,433l-2.125-3.625V429
 					l0.875-3.125l-1.25-1.125l-1-3.5l-1.5,1.75l-2.25,3.125l-1.625-0.625l-4.625-0.875l-0.125-4.75L254.625,418l-1.375,1.375
 					l-2.375-0.25l0.5,4.25l-0.5,3.375l-3.375,3.625l-4.25,0.375L240.5,434v9.375l-1.625,3l-0.5,4.25l-1.625,1.625l6.25,3.125
 					l-0.875,3.25l3.5,3.875l3.625,4l3-4.5l-0.125-5.375l1.75-2.875l0.125-0.5l1.25,0.875l0.375,5.875l3.875,3.875l3,2.25
@@ -178,7 +178,7 @@
 
 <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="500" height="500" preserveAspectRatio="none" viewBox="435 525 100 100"  >
       <g name="울산" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgUlsan" >
-		<path i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M520.875,554.5l-2.125-3l-1.25-4.5l-10.25-4.25L500,547.5l-4.5-1.625
+		<path class="land"  i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M520.875,554.5l-2.125-3l-1.25-4.5l-10.25-4.25L500,547.5l-4.5-1.625
 					l-0.5-6.625l-6.5-1.75l-6.75,0.25l-1.25-1l-3,2.5l-4.75,0.75l-3.25,6.5l2.375,3.375L468.25,550l-5.25,2l2.125,3.125l-0.75,3.75
 					l-5.25,3v2.875l3,2.5l1.5,1.5l6.5,0.875l5.875,4.25l6.125,8.25l5.625-0.375l2.875,3.75l-2,3.75l5.25,0.75l2.375-0.875l2.5,2.125
 					l0.375,5.75l1.875,1.625l4.75-3.875l2.625-0.625L508.75,593l-0.875-4.25l0.875-2.625l-0.625-2.75l1.25-2.25l-2-3.75L511.25,575
@@ -189,7 +189,7 @@
 
 <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="700" preserveAspectRatio="none" viewBox="185 450 400 400"  >
       <g name="경남" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgKyungnam" >
-	<path i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M487.75,581.75l-5.625,0.375l-6.375-8.875l-5-3.5l-6.5-0.75
+	<path class="land" i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M487.75,581.75l-5.625,0.375l-6.375-8.875l-5-3.5l-6.5-0.75
 					l-3.5-2.75l-1.625-1.5v-2.875l5.25-3l0.75-3.75L463,552l-3.5,3.25l-3.5-3.5l-4.25-1.75l-6.25,2.25l-3.25,5.25l-5,1l-2.5,3
 					l-7.25-0.75l-9.25-2.5l-5.5,2.5l-10-8.75l-1.25-4l-1-3l-0.667,1.5l-1,5.5L391,552.25l-5.833,3.75l-3.334,0.333l-3.166-4.5
 					l-4.5-2.166L366.333,550l-2.833,2l-3.833-0.667l-1.334-1.5l-3.583-1.333l-0.583-1.833l6-4.334l-2.334-6.833l-3.666-5.167l-3-1.5
@@ -213,7 +213,7 @@
 
 <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="700" preserveAspectRatio="none" viewBox="215 270 400 400"  >
       <g name="경북" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgKyungbuk" >
-	<path i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M532.75,481l-2-2l-5.75,8.75l-3.25,2.25l-2.75,4l-5.25-2.75
+	<path class="land" i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M532.75,481l-2-2l-5.75,8.75l-3.25,2.25l-2.75,4l-5.25-2.75
 					L511.5,488l-3.25-4.5l6-6l1.25-2.5l-4.5-4.25l-0.75-5.5l-2.5-2.25l-1-2l1.25-0.5l1.75-4l-1.5-1.25l-1-4.5l0.25-10.5l6.5-11
 					l0.25-8.75l1.25-7l0.5-6.5l-4.5-5.75l-0.25-6.5l1.417-5.583l5.166-4.167l0.5-7.333l-0.833-3.333l0.667-2.667l-2.5-7.667
 					l-4.5-4.5l-0.834-7.667l0.834-6.167L509,340.833l1-3.5l-0.833-7.833l2.333-2.833l-6.167-5.833l-2.5-7h-3.5L495.667,318
@@ -240,7 +240,7 @@
 
 <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="500" height="500" preserveAspectRatio="none" viewBox="405 580 100 100"  >
       <g name="부산" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgBusan" >
-	<path i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M499.125,596.5l-0.375-5.25L496,589.5l-2.125,0.5L489,589.25
+	<path class="land" i:knockout="Off" fill="#872175" stroke="#FFFFFF" d="M499.125,596.5l-0.375-5.25L496,589.5l-2.125,0.5L489,589.25
 					l-1.25,3.75l-3,2l-2.625-2.125L479.75,593l-1.5,9.5l-8.75,3.75l-3.25,1.25l-1-0.75L463,612.5l-7,2.75l-2.5,2.5l-5.25,0.25
 					l-2,4.5l0.25,3.5l-3.5-1.75l-1.75,2.25l-4,0.375l0.875,2.375l4.375,3.375l0.375,2.25l-2.375,1.875l2.375,1.5l6-0.125L450,633
 					l1.5-0.875l0.125,5.625l1.75-0.5l1.875-3.75l2-0.75l0.375,7l1.625,5.125l2.25-3.125L463,644v-3l-0.625-2.25l0.5-1.625l1.498-0.2
@@ -253,7 +253,7 @@
 
 <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="500" height="500" preserveAspectRatio="none" viewBox="405 720 150 150"  >
       <g name="제주" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgJeju" >
-	<path i:knockout="Off" fill="#B9B9B9" stroke="#FFFFFF" d="M532.167,742.667l-1.334-2l-3.166-2.5l0.5-3.5l-0.5-4l-2.834-0.167
+	<path class="land" i:knockout="Off" fill="#B9B9B9" stroke="#FFFFFF" d="M532.167,742.667l-1.334-2l-3.166-2.5l0.5-3.5l-0.5-4l-2.834-0.167
 					l-6.166-1.667l-2-4.833l-9-0.333l-2.834,2.5L496,726.5l-6.333,2L484,731h-10.333l-7.334,4L459,738.5l-8.833,0.333l-2.5,3
 					l-4.334,2.834L443,747.833L430.333,759.5v8.333l2.167,4l1.833,3.167l3.667,0.833l5.667,6l2.833,0.334L447,779l3.333-2.333
 					l9,0.666l2.334-1.666l2.666,1.333h3.167l5,0.5l11-1.167l4.333,1.5c0,0,5.667-5.833,6-6.333s11,0,11,0l5.5-4.5l7.5-0.833
@@ -265,7 +265,7 @@
 
 <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="500" height="500" preserveAspectRatio="none" viewBox="345 480 100 100"  >
       <g name="대구" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgDaegu" >
-	<path i:knockout="Off" fill="#B9B9B9" stroke="#FFFFFF" d="M427.75,505.75l-0.5-9l-1.25-3.5l-3.833-1.084l-8.834,0.001
+	<path class="land" i:knockout="Off" fill="#B9B9B9" stroke="#FFFFFF" d="M427.75,505.75l-0.5-9l-1.25-3.5l-3.833-1.084l-8.834,0.001
 					L410,496.333l-0.333,0.334l-6,3l-2.5-1.667l-1.334,1.333l1,3.667L400,507.167l-2.333,4.166L393.333,510L393,504.833l-2.5-1.166
 					l-4.667,4L383,512.5v7.167l4.833-1.167l6.667,3.333l-0.5,2l-6.667,1L383.5,533l6,4.833L388.833,543l-9.166-1l0.666,4.667
 					l4.5,4.5l0.334,4.833l6.666-3.833l7-0.167l1-5.5l0.917-2.25l0.75-4.25l4.5-3.5l7.25,0.25l-0.5,4.5l7.417-2.583L421.75,534
@@ -276,7 +276,7 @@
 
 <svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="700" preserveAspectRatio="none" viewBox="65 450 300 300"  >
       <g name="전북" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#000000000000" seq="1" class="md-trigger" data-modal="modal-3" id="svgJunbuk" >
-	<path i:knockout="Off" fill="#B9B9B9" stroke="#FFFFFF" d="M323,503.5l-5.167-7.333l-0.5-3.334L313.5,491l-10.167,3.333
+	<path class="land" i:knockout="Off" fill="#B9B9B9" stroke="#FFFFFF" d="M323,503.5l-5.167-7.333l-0.5-3.334L313.5,491l-10.167,3.333
 					L302.167,492l-5.667-1.167l-3-4.833l-2.667,2.667l-3.667-4.167L285,486.667l1.667,4.166l-1.667,4.5l-10-5.833l-0.96,7.842
 					L264.667,498l-3.833-5.833l-2.167,2.333l-1.167-0.333l-3.148-3.577l0.148-0.423L253.167,488L251,478.333l-3.333-2.666
 					L243,479.333l-4-1.583l-0.75,4.125l-4.583-1.208L231.5,482.5h-7l-2.667,2.833l-6.333-2.583l-3.333-9.25l-3.292,1.125
@@ -298,9 +298,9 @@
 </svg>
 
 
-<svg version="1.1" id="svgJunam" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="700" preserveAspectRatio="none" viewBox="45 510 300 300"  >
-	<g name="전남" id="svgJunam" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#800080008000">
-    <path i:knockout="Off" fill="#B9B9B9" d="M287.25,668H293l6.5-7.5l2-0.75l3.167-3.083l2.333-2.334l0.667-3.833l-1.834,0.167
+<svg version="1.1" id="svgMap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="700" height="700" preserveAspectRatio="none" viewBox="45 510 300 300"  >
+	<g name="전남"  id="svgJunam" i:layer="yes" i:dimmedPercent="50" i:rgbTrio="#800080008000">
+    <path class="land" title="전라남도" i:knockout="Off" fill="#B9B9B9" d="M287.25,668H293l6.5-7.5l2-0.75l3.167-3.083l2.333-2.334l0.667-3.833l-1.834,0.167
 						L304.5,646l-2.667-2l-1.333-2.667l-5-4l-0.667-6l-8.583-7.083l0.75-8.75l-4.25-6l-2.25-4l-4.25-4.25l-7-4.5l-6.875-0.25
 						L256,605.125l-0.198,3.664l-0.302-3.622l-4-2.292l-4.833,3.625l-4.167-2.667l-3.875-0.333l-3.125-3.625l-2.25,3.875
 						l-3.125-1.125l0.208-3.125l-8.583,6.625l-3.75-0.792l-4.375-1.708L212.5,600.5l2.375-0.625l-0.75-6.375l-3-0.625l-1-2.375
@@ -342,6 +342,7 @@
 </template>
 
 <script>
+     
 
     import Mainbox from "@/Layouts/Mainbox.vue";
     import {Chart, registerables} from 'chart.js';
@@ -350,7 +351,13 @@
     import Navbar from "@/Layouts/Navbar.vue";
     Chart.register(...registerables);
 
+
+  
+
+
     export default {
+
+       
         props: ['age'],
 
         methods: {
@@ -569,7 +576,35 @@
         }
         },
 
-        mounted() {
+        mounted() { 
+            $("g").mouseover(function (event) {
+		var _path = event.target;
+		var city_name = _path.id;
+		var province = $(_path).parent()[0].id;
+		d3.select(_path).style("fill", "red");
+
+		console.log(province, city_name);
+	}).mouseout(function (event) {
+		var _path = event.target;
+		var province = $(_path).parent()[0].id;
+		var fill = $("#" + province).find("path").attr("fill");
+		d3.select(_path).style("fill", fill);
+	});
+
+    [].forEach.call(document.querySelectorAll('path.land'), function(item) {
+item.addEventListener('mouseenter', function() {
+      $('#info-box').css('display','block');
+      document.getElementById('info-box').innerHTML=this.getAttribute("title")
+});
+item.addEventListener('mouseleave', function(){
+  $('#info-box').css('display','none');
+});
+})
+$(document).mousemove(function(e) {
+$('#info-box').css('top',e.pageY-100);
+$('#info-box').css('left',e.pageX-($('#info-box').width())/2-30);
+}).mouseover();
+
             this.fillData();
             this.crime = this.age;
             this.namelist = [
@@ -609,8 +644,26 @@
  
 </script>
 
+
+
 <style lang="scss">
+
+//지역마다 path 에 title붙이기.
+
+
     .navbar {
         z-index: 1;
     }
+     #info-box {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    background-color: #ffffff;
+    border: 2px solid #BF0A30;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: arial;
+  }
 </style>
+

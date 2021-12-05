@@ -48,4 +48,6 @@ InertiaProgress.init({
     color: '#4B5563'
 });
 
-createApp(App).use(ZiggyVue, Ziggy);
+
+
+// createApp(App).use(ZiggyVue, Ziggy);

@@ -31,9 +31,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::get('/chart1', function () {
-    return Inertia::render('Chart1');
-})->name('chart1');
+
+Route::get('/chart', [PostController::class, 'chart'])->name('chart');
 
 Route::get('/map1', function () {
     return Inertia::render('Map1');
@@ -44,6 +43,7 @@ Route::get('/map2', function () {
 })->name('map2');
 
 Route::get('/index', [PostController::class, 'index'])->name('index');
+
 
 
 
