@@ -39,11 +39,37 @@
                         <a class="dropdown-item">강력범죄</a>
                         <a class="dropdown-item">공무원범죄</a>
                     </div>
+
+
                 </div>
+                    
+            <select
+                id="crime"
+                class="land"
+                style="background-color: rgb(24, 26, 27)">
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+            </select>
+
+            <select
+                id="crimetype"
+                class="land"
+                style="background-color: rgb(24, 26, 27)">
+                <option value="재산범죄">재산범죄</option>
+                <option value="강력범죄">강력범죄</option>
+                <option value="공무원범죄">공무원범죄</option>
+            </select>
+
             </h2>
         </template>
-
-        <div id="map" style="width: 80%; height: 700px"></div>
+        <div id="map" style="width: 80%; height: 700px">
+   <img src="../../img/gradient.png" alt="">
+            
+        </div>
 
     </app-layout>
 
@@ -55,15 +81,77 @@
         components: {
             AppLayout
         },
+        props:['crimeData'],
 
+        data(){
+            return{
+                    crimeDatas:"",
+            }
+        },
         mounted() {
 
+
+// var CustomOverlay = function(options) {
+//     this._element = $('<div style="position:absolute;left:0;top:0;width:124px; height:130px;background-color:#F2F0EA;text-align:center;border:2px solid #6C483B;">' +
+//                         '<img src=  "../../gradient.JPG" style="width: 120px; height:130px">' +
+//                         '<span style="font-weight: bold;"> Brown </span>' +
+//                         '</div>')
+
+//     this.setPosition(options.position);
+//     this.setMap(options.map || null);
+// };
+
+// CustomOverlay.prototype = new naver.maps.OverlayView();
+// CustomOverlay.prototype.constructor = CustomOverlay;
+
+// CustomOverlay.prototype.setPosition = function(position) {
+//     this._position = position;
+//     this.draw();
+// };
+
+// CustomOverlay.prototype.getPosition = function() {
+//     return this._position;
+// };
+
+// CustomOverlay.prototype.onAdd = function() {
+//     var overlayLayer = this.getPanes().overlayLayer;
+
+//     this._element.appendTo(overlayLayer);
+// };
+
+// CustomOverlay.prototype.draw = function() {
+//     if (!this.getMap()) {
+//         return;
+//     }
+
+//     var projection = this.getProjection(),
+//         position = this.getPosition(),
+//         pixelPosition = projection.fromCoordToOffset(position);
+
+//     this._element.css('left', pixelPosition.x);
+//     this._element.css('top', pixelPosition.y);
+// };
+
+// CustomOverlay.prototype.onRemove = function() {
+//     var overlayLayer = this.getPanes().overlayLayer;
+
+//     this._element.remove();
+//     this._element.off();
+// };
+
+            this.crimeDatas = this.crimeData;
+         
             const mapOptions = {
                 center: new naver
                     .maps
                     .LatLng(38, 125),
                 zoom: 11,
-                useStyleMap: true
+                useStyleMap: true,
+                 zoomControl: true, //줌 컨트롤
+              zoomControlOptions: { 
+            position: naver.maps.Position.TOP_RIGHT
+        },
+     
             };
 
             this.map = new naver
@@ -73,6 +161,22 @@
                 .map
                 .data
                 .addGeoJson(geojsonfile);
+
+
+
+// marker
+
+
+
+  
+// var position = new naver.maps.LatLng(37.3849483, 127.1229117);
+
+// var overlay = new CustomOverlay({
+//     map: this.map,
+//     position: position
+// });
+
+
 
             this
                 .map
@@ -97,10 +201,26 @@
                 .maps
                 .InfoWindow({content: "로딩 중입니다"});
 
+
+            
+            
+          
             this
                 .map
                 .data
                 .addListener('mouseover', (e) => {
+                    
+                    const selectedYear = document
+                    .getElementById('crime')
+                    .value;
+
+
+                     const crimetype = document
+                    .getElementById('crimetype')
+                    .value;
+
+
+
                     this
                         .map
                         .setCursor("pointer");
@@ -124,13 +244,39 @@
                         .maps
                         .LatLng(e.offset.x, e.offset.y);
 
+                          var namelist = [
+                '서울',
+                '부산',
+                '대구',
+                '인천',
+                '광주',
+                '대전',
+                '울산',
+                '세종',
+                '경기',
+                '강원',
+                '충북',
+                '충남',
+                '전북',
+                '전남',
+                '경북',
+                '경남',
+                '제주'
+            ];
+
                     switch (region) {
                         case '서울특별시':
                             point = naver
                                 .maps
                                 .LatLng(37.5820587276502, 126.97914178314467);
                             var inforegion = region;
+                           
+                            var crime = crimetype;
+                               var cYear = selectedYear;
+                            var nPeople =  this.crimeDatas[0][selectedYear + "년 " + namelist[1]];
 
+                         
+                            
                             this
                                 .map
                                 .data
@@ -140,13 +286,17 @@
                                     strokeOpacity: 1,
                                     fillColor: '#f7e600'
                                 });
+
+
                             break;
                         case '인천광역시':
                             point = naver
                                 .maps
                                 .LatLng(37.47452697399199, 126.70679201321082);
                             var inforegion = region;
-
+                            var cYear;
+                            var crime;
+                            var nPeople;
                             break;
 
                         case '부산광역시':
@@ -154,7 +304,9 @@
                                 .maps
                                 .LatLng(35.215627818345965, 129.03666066607425);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
 
                         case '대구광역시':
@@ -162,14 +314,18 @@
                                 .maps
                                 .LatLng(35.89970846670154, 128.53782825490094);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
                         case '울산광역시':
                             point = naver
                                 .maps
                                 .LatLng(35.571600828984856, 129.25979277577076);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
                         case '세종특별자치시':
 
@@ -177,7 +333,9 @@
                                 .maps
                                 .LatLng(36.52637935936001, 127.39670530710237);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
                         case '대전광역시':
 
@@ -185,7 +343,9 @@
                                 .maps
                                 .LatLng(36.34344125167462, 127.37836783201705);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
                         case '광주광역시':
 
@@ -193,7 +353,10 @@
                                 .maps
                                 .LatLng(35.17686535594658, 126.85391604457695);
                             // var inforegion = region;
-                            var inforegion = "외국입니다.";
+                            var inforegion = region;
+                                 var cYear;
+                            var crime;
+                            var nPeople;
                             break;
                         case '경기도':
 
@@ -201,7 +364,9 @@
                                 .maps
                                 .LatLng(37.57812827049015, 127.4206063176053);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
                         case '강원도':
 
@@ -209,7 +374,9 @@
                                 .maps
                                 .LatLng(37.840185938725476, 128.26038788434911);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
                         case '충청남도':
 
@@ -217,7 +384,9 @@
                                 .maps
                                 .LatLng(36.6218316114712, 126.81876286143893);
                             var inforegion = region;
-
+                                 var cYear;
+                            var crime;
+                            var nPeople;
                             break;
                         case '충청북도':
 
@@ -225,7 +394,9 @@
                                 .maps
                                 .LatLng(36.973005089464976, 127.60722444354838);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
                         case '경상북도':
 
@@ -233,7 +404,9 @@
                                 .maps
                                 .LatLng(36.471908295437814, 128.82957316636407);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
                         case '경상남도':
 
@@ -241,15 +414,19 @@
                                 .maps
                                 .LatLng(35.49034616582705, 128.3023769605749);
                             var inforegion = region;
-
-                            break;
+                             var cYear;
+                            var crime;
+                            var nPeople;
+                            break;      
                         case '전라북도':
 
                             point = naver
                                 .maps
                                 .LatLng(35.76338470849839, 127.16867184513735);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
                         case '전라남도':
 
@@ -257,7 +434,9 @@
                                 .maps
                                 .LatLng(34.94147936019404, 126.95406100030283);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
 
                         case '제주특별자치도':
@@ -266,7 +445,9 @@
                                 .maps
                                 .LatLng(33.38584286233105, 126.55283202819172);
                             var inforegion = region;
-
+                             var cYear;
+                            var crime;
+                            var nPeople;
                             break;
 
                     }
@@ -275,13 +456,14 @@
                         '<div class="iw_inner" style="border:2px solid gold ; box-shadow: 20px 10px 33p' +
                                 'x #FF0000;  background-color: #CCFFFF ">',
                         '   <h3>' + inforegion + '</h3>',
-                        '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
+                        '   <p>' + cYear  +'년    범죄 종류' +crime    + nPeople + ' 명'+ '<br />',
                         '       <br />',
-                        '       02-120 | 공공,사회기관 &gt; 특별,광역시청<br />',
-                        '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
+                        '       <br />',
                         '   </p>',
                         '</div>'
                     ].join(''));
+                                                
+                    
                     //동적으로 데이터 받아와 infowindow 교체
 
                     if (infowindow.getMap()) {

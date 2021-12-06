@@ -38,9 +38,9 @@ Route::get('/map1', function () {
     return Inertia::render('Map1');
 })->name('map1');
 
-Route::get('/map2', function () {
-    return Inertia::render('Map2');
-})->name('map2');
+
+
+Route::get('/map2', [PostController::class, 'map'])->name('chart');
 
 Route::get('/index', [PostController::class, 'index'])->name('index');
 

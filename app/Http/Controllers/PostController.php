@@ -56,4 +56,16 @@ class PostController extends Controller
 
         return Inertia::render('Chart', ['age' => $t2018]);
     }
+
+
+    public function map()
+    {
+        $b2018 = DB::table('crimes')->get();
+        $crimeData = json_decode(json_encode($b2018), true);
+
+
+
+
+        return Inertia::render('Map2', ['crimeData' => $crimeData]);
+    }
 }
