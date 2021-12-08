@@ -17,17 +17,25 @@ use Inertia\Inertia;
 |
 */
 
-Route::post('/post/store', [PostController::class, 'store'])->name('store');
+
+Route::get('/chart', [ServiceController::class, 'chart'])->name('chart');
+
+Route::get('/map2', [ServiceController::class, 'map'])->name('map');
+
+Route::get('/index', [ServiceController::class, 'index'])->name('index');
+
+Route::get('/question', [ServiceController::class, 'question'])->name('question');
+
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Mainbox', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
 
     ]);
-});
+})->name('main');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -35,9 +43,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/chart', [ServiceController::class, 'chart'])->name('chart');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/map1', function () {
+
+Route::get('/map1', function () {
     return Inertia::render('Map1');
 })->name('map1');
 
@@ -49,19 +57,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/post/show/{id}', [PostCon
 
 Route::middleware(['auth:sanctum', 'verified'])->delete('/post/delete/{id}', [PostController::class, 'destroy'])->name('delete');
 
-
+Route::middleware(['auth:sanctum', 'verified'])->post('/post/store', [PostController::class, 'store'])->name('store');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/post/create', [PostController::class, 'create'])->name('create');
-
-
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/map2', [ServiceController::class, 'map'])->name('chart');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/index', [ServiceController::class, 'index'])->name('index');
-
-
-
-
-// Route::get('file-import-export', [UserController::class, 'fileImportExport']);
-// Route::post('file-import', [UserController::class, 'fileImport'])->name('file-import');
-// Route::get('file-export', [UserController::class, 'fileExport'])->name('file-export');
