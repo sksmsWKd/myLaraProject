@@ -9,7 +9,7 @@
             <nav class="d-flex navbar navbar-expand-md navbar-dark bg-dark text-gray-200 sticky-top">
                 <!-- Primary Navigation Menu -->
              <div class="container-fluid">
-        <a class="navbar-brand" :href="route('dashboard')" :active="route().current('dashboard')">Navbar</a>
+        <a class="navbar-brand" :href="route('dashboard')" :active="route().current('dashboard')">ㅎ_ㅇ</a>
        
         <button
           class="navbar-toggler"

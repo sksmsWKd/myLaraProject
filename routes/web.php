@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,6 +16,8 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('/post/store', [PostController::class, 'store'])->name('store');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -32,17 +35,29 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 
-Route::get('/chart', [PostController::class, 'chart'])->name('chart');
+Route::middleware(['auth:sanctum', 'verified'])->get('/chart', [ServiceController::class, 'chart'])->name('chart');
 
-Route::get('/map1', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/map1', function () {
     return Inertia::render('Map1');
 })->name('map1');
 
+Route::middleware(['auth:sanctum', 'verified'])->post('/post/update/{id}', [PostController::class, 'update'])->name('update');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/post/edit/{id}', [PostController::class, 'edit'])->name('edit');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/post/show/{id}', [PostController::class, 'show'])->name('show');
+
+Route::middleware(['auth:sanctum', 'verified'])->delete('/post/delete/{id}', [PostController::class, 'destroy'])->name('delete');
 
 
-Route::get('/map2', [PostController::class, 'map'])->name('chart');
 
-Route::get('/index', [PostController::class, 'index'])->name('index');
+Route::middleware(['auth:sanctum', 'verified'])->get('/post/create', [PostController::class, 'create'])->name('create');
+
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/map2', [ServiceController::class, 'map'])->name('chart');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/index', [ServiceController::class, 'index'])->name('index');
 
 
 

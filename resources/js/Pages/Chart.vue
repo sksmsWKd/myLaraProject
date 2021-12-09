@@ -7,7 +7,7 @@
         </template>
         <!-- <mainbox></mainbox> -->
         <div>
-            <canvas id="chart" width="150" height="150"></canvas>
+            <canvas class="col-xs-1 center-block" id="chart" width="1200" height="700"></canvas>
         </div>
 
         <div class="selectBox text-gray-200 ">
@@ -48,6 +48,7 @@
 
         </div>
         <div id="info-box"></div>
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -82,7 +83,15 @@
 					l-4.792,7.333l6.229,2.604L183.5,256.583z"/>
             </g>
         </svg>
+            <div  class="flex-fill text-right" >
+         <PostPage regionN="0" :posts="posts"></PostPage>
+            </div>
 
+       </div>
+    
+      
+   
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -113,7 +122,13 @@
 					l0.188,2.063l1.833,1.146l1.417,2.25l3.333,2.75l2.75,1.917l5.417,0.167L179,268.5l-1.75-1.25L174.667,265z"/>
             </g>
         </svg>
+          <div  class="flex-fill text-right">
+   <PostPage  regionN="1" :posts="posts"></PostPage>
+   </div>
+       </div>
 
+  
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -162,7 +177,12 @@
 					l-1.333-6.333l-4.667-3.333l7.333-6.833L312.167,254.167z"/>
             </g>
         </svg>
-
+             <div  class="flex-fill text-right">
+   <PostPage regionN="2" :posts="posts"></PostPage>
+   </div>
+       </div>
+ 
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -208,7 +228,12 @@
 					l2.625-0.875l2.25-3.75l2.25-4.25l6.25-0.125l2.75-3.167L409.5,324.333z"/>
             </g>
         </svg>
-
+           <div  class="flex-fill text-right">
+   <PostPage regionN="3" :posts="posts"></PostPage>
+   </div>
+       </div>
+ 
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -256,7 +281,13 @@
 					L287.167,484.5z"/>
             </g>
         </svg>
+         <div  class="flex-fill text-right">
+   <PostPage regionN="4" :posts="posts"></PostPage>
+   </div>
+       </div>
 
+  
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -301,7 +332,13 @@
 
             </g>
         </svg>
+           <div  class="flex-fill text-right">
+   <PostPage regionN="5" :posts="posts"></PostPage>
+   </div>
+       </div>
 
+ 
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -333,7 +370,13 @@
 					V628.25z"/>
             </g>
         </svg>
+          <div  class="flex-fill text-right">
+   <PostPage  regionN="6" :posts="posts"></PostPage>
+   </div>
+       </div>
 
+  
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -365,7 +408,13 @@
 					l6.167-6.792L268.5,455l1.167-3.167L268.875,448l0.792-4.333l2.958-2.667l0.375-5.167l2.125-0.333l2.208-1.667L275.667,433z"/>
             </g>
         </svg>
+         <div  class="flex-fill text-right">
+   <PostPage  regionN="7" :posts="posts"></PostPage>
+   </div>
+       </div>
 
+  
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -398,7 +447,12 @@
 					l-1.375-1.75l1.5-2L520.875,554.5z"/>
             </g>
         </svg>
-
+         <div  class="flex-fill text-right">
+   <PostPage regionN="8" :posts="posts"></PostPage>
+   </div>
+       </div>
+ 
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -444,7 +498,12 @@
 
             </g>
         </svg>
-
+       <div  class="flex-fill text-right">
+   <PostPage  regionN="9" :posts="posts"></PostPage>
+       </div>
+       </div>
+ 
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -493,7 +552,13 @@
 					l-0.5-2.75l1.75-2.5L528,510l-2-7l4-2.5l1.25-5.5l2.75-6.5L532.75,481z"/>
             </g>
         </svg>
+        <div  class="flex-fill text-right">
+   <PostPage regionN="10" :posts="posts"></PostPage>
+   </div>
+       </div>
 
+  
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -527,7 +592,13 @@
 					l1.625-0.375l0.875-2.25l1.25-2.75l-1.875-1.5l1.375-1.25l2-2.875l-1.5-1.875l1.875-3.25l2.25,1.125l0.625-1.75L499.125,596.5z"/>
             </g>
         </svg>
+         <div  class="flex-fill text-right">
+   <PostPage regionN="11" :posts="posts"></PostPage>
+   </div>
+       </div>
 
+ 
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -559,7 +630,13 @@
 					l0.167-3.334l5.833-8l3.334-3.333l4-3.833l-1.334-2.167L532.167,742.667z"/>
             </g>
         </svg>
+           <div  class="flex-fill text-right">
+   <PostPage regionN="12" :posts="posts"></PostPage>
+   </div>
+       </div>
 
+  
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -592,7 +669,13 @@
 					l1.25-2.75l-1-3.25l3.25-2.5l-0.417-4.667l2.5-4.166l2.5-1.667l0.417-7.5L427.75,505.75z"/>
             </g>
         </svg>
+    <div  class="flex-fill text-right">
+   <PostPage regionN="13" :posts="posts"></PostPage>
+   </div>
+       </div>
 
+  
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -637,7 +720,13 @@
 
             </g>
         </svg>
+          <div  class="flex-fill text-right">
+   <PostPage  regionN="14" :posts="posts"></PostPage>
+   </div>
+       </div>
 
+ 
+       <div class="d-flex pr-3">
         <svg
             version="1.1"
             id="svgMap"
@@ -695,6 +784,11 @@
 
             </g>
         </svg>
+     <div  class="flex-fill text-right">
+   <PostPage regionN="15" :posts="posts"></PostPage>
+   </div>
+       </div>
+
 
     </app-layout>
 </template>
@@ -706,11 +800,12 @@
     import {defineComponent} from "vue";
     import AppLayout from "@/Layouts/AppLayout.vue";
     import Navbar from "@/Layouts/Navbar.vue";
+    import PostPage from "@/Layouts/PostPage.vue";
     Chart.register(...registerables);
 
     export default {
 
-        props: ['age'],
+        props: ['age','posts'],
 
         methods: {
 
@@ -794,6 +889,7 @@
                 this.myChart = new Chart(ctx, {
                     type: 'bar',
                     options: {
+                        responsive: false,
                         plugins: {
                             scales: {
                                 y: {
@@ -977,7 +1073,8 @@
             Navbar,
             Mainbox,
             defineComponent,
-            AppLayout
+            AppLayout,
+            PostPage
 
         }
     }
