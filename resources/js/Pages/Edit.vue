@@ -35,7 +35,7 @@
           <label for="file">file</label>
           <input type="file" name="image" />
         </div>
-
+    <img class="card-img-top" :src=post.image alt="Card image cap">
         <br />
         <br />
         <br />

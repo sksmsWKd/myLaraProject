@@ -5,10 +5,8 @@
       <h2 class="h4 font-weight-bold">Create</h2>
     </template>
 
-    <div class="container mt-5 text-gray-300">
-      <form 
-
-      @submit.prevent="storePost" enctype="multipart/form-data">
+    <div class="container mt-5 text-gray-300 ">
+      <form @submit.prevent="storePost" enctype="multipart/form-data">
  
           <input type="hidden" name="region77" id="region77" :value=this.region11>
 
@@ -42,6 +40,7 @@
           <label for="image">image</label>
           <input type="file" 
           id="image"
+  
           @input="this.form.image = $event.target.files[0]" />
                                   
         </div>
@@ -54,7 +53,7 @@
         <div>
           <button
          
-     
+     type="submit"
             style="color: lavender"
             class="btn btn-secondary"
           >
@@ -80,21 +79,27 @@ export default {
    components: {
     AppLayout,
   },
-  setup(){
+
+
+
+   setup(){
      const form = useForm({
         title: '',
         image: null,
         content: '',
         region: '',
-      
     })
+
     function storePost() {
-          
-          
-              form.post('/post/store', this.form);
-          }
+      form.post('/post/store')
+    }
+
     return { form, storePost }
   },
+
+
+
+
   
     data(){
         return{
@@ -108,6 +113,9 @@ export default {
       console.log(this.region11);//
       this.form.region = this.region11;
 
+    },
+    methods:{
+     
     }
 
 
