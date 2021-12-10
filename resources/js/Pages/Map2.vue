@@ -1,55 +1,19 @@
 <template>
 
     <app-layout title="map2">
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-200 leading-tight ">
-                <div class="dropdown show float-sm-left mr-4 mb-4">
-                    <a
-                        class="btn btn-secondary dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                        일반범죄
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item">재산범죄</a>
-                        <a class="dropdown-item">강력범죄</a>
-                        <a class="dropdown-item">공무원범죄</a>
-                    </div>
-                </div>
-
-                <div class="dropdown show float-sm-left mr-4 mb-4">
-                    <a
-                        class="btn btn-secondary dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                        강력범죄
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item">재산범죄</a>
-                        <a class="dropdown-item">강력범죄</a>
-                        <a class="dropdown-item">공무원범죄</a>
-                    </div>
-
+        <template #header class="text-gray-200">
+            <div class="inline-block ">
+            <h2 class="font-semibold text-xl text-gray-200 mr-20 leading-tight ">
+               Crime data on the map
+            </h2>
+            </div>
                     <!--#40E0D0 #FF8C00 #FF0080 -->
                     <!-- 1. 지도에 년도/범죄자수 저장 + 잘보이게 -->
                     <!-- ㅇㅇ -->
                     <!-- 2. 년도 선택시 색 선택-->
                     <!-- ㅇㅇ -->
                     <!-- 3. 차트페이지 게시글표시 -->
-                    
-
-                </div>
-
+                      <div class="inline-block text-gray-200 mr-2  ">
                 <select id="year"  @change="changes()" class="land" style="background-color: rgb(24, 26, 27)">
                     <option value="2014">2014</option>
                     <option value="2015">2015</option>
@@ -58,8 +22,8 @@
                     <option value="2018">2018</option>
                     <option value="2019">2019</option>
                 </select>
-
-
+ </div>
+               <div class="inline-block text-gray-200  mr-20 ">
                 <select
                     id="crimetype"
                     class="land"
@@ -68,11 +32,17 @@
                     <option value="4">재산범죄 소계</option>
                     <option value="11">강력범죄 소계</option>
                     <option value="12">살인</option>
+                    <option value="25">위조범죄 소계</option>
+                <option value="26">공무원범죄 소계</option>
+                <option value="27">풍속범죄 소계</option>
+                <option value="28">특별법범 소계</option>
+                <option value="29">형법범 과실범죄 소계</option>
+                <option value="30">기타형법범죄 소계</option>
                 </select>
-
-            </h2>
+ </div>
+           
         </template>
-        <div id="map" style="width: 80%; height: 700px; z-index: 2;">
+        <div id="map" class="mx-auto mt-3" style="width: 80%; height: 700px; z-index: 2;">
             <img
                 src="../../img/gradient.png"
                 id="img"
@@ -225,6 +195,102 @@
                             }
                             break;
 
+                            case "25":
+ for (let i = 0; i < namelist.length; i++) {
+                                let color = 0.0001 * arr2[i];
+                                this
+                                    .map
+                                    .data
+                                    .overrideStyle(this.map.data._features[i], {
+                                        fillOpacity: color,
+                                        strokeWeight: 2,
+                                        strokeOpacity: 0.4,
+                                        fillColor: '#ff0000'
+                                    });
+                                console.log(color);
+ }
+                            break;
+
+                            case "26":
+ for (let i = 0; i < namelist.length; i++) {
+                                let color = 0.001 * arr2[i];
+                                this
+                                    .map
+                                    .data
+                                    .overrideStyle(this.map.data._features[i], {
+                                        fillOpacity: color,
+                                        strokeWeight: 2,
+                                        strokeOpacity: 0.4,
+                                        fillColor: '#ff0000'
+                                    });
+                                console.log(color);
+ }
+                            break;
+
+                            case "27":
+ for (let i = 0; i < namelist.length; i++) {
+                                let color = 0.0005 * arr2[i];
+                                this
+                                    .map
+                                    .data
+                                    .overrideStyle(this.map.data._features[i], {
+                                        fillOpacity: color,
+                                        strokeWeight: 2,
+                                        strokeOpacity: 0.4,
+                                        fillColor: '#ff0000'
+                                    });
+                                console.log(color);
+ }
+                            break;
+
+                            case "28":
+ for (let i = 0; i < namelist.length; i++) {
+                                let color = 0.00001 * arr2[i];
+                                this
+                                    .map
+                                    .data
+                                    .overrideStyle(this.map.data._features[i], {
+                                        fillOpacity: color,
+                                        strokeWeight: 2,
+                                        strokeOpacity: 0.4,
+                                        fillColor: '#ff0000'
+                                    });
+                                console.log(color);
+ }
+                            break;
+
+                            case "29":
+ for (let i = 0; i < namelist.length; i++) {
+                                let color = 0.0005 * arr2[i];
+                                this
+                                    .map
+                                    .data
+                                    .overrideStyle(this.map.data._features[i], {
+                                        fillOpacity: color,
+                                        strokeWeight: 2,
+                                        strokeOpacity: 0.4,
+                                        fillColor: '#ff0000'
+                                    });
+                                console.log(color);
+ }
+                            break;
+
+                            case "30":
+ for (let i = 0; i < namelist.length; i++) {
+                                let color = 0.0001 * arr2[i];
+                                this
+                                    .map
+                                    .data
+                                    .overrideStyle(this.map.data._features[i], {
+                                        fillOpacity: color,
+                                        strokeWeight: 2,
+                                        strokeOpacity: 0.4,
+                                        fillColor: '#ff0000'
+                                    });
+                                console.log(color);
+ }
+                            break;
+
                     }
                 }
             },
@@ -370,16 +436,7 @@
                                 var cYear = selectedYear;
                                 var nPeople = this.crimeDatas[crime][selectedYear + "년 " + namelist[0]];
 
-                                this
-                                    .map
-                                    .data
-                                    .overrideStyle(feature, {
-                                        fillOpacity: 0.6,
-                                        strokeWeight: 4,
-                                        strokeOpacity: 1,
-                                        fillColor: '#f7e600'
-                                    });
-
+                              
                                 break;
 
                             case '부산광역시':

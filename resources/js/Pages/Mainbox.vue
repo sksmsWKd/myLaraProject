@@ -1,13 +1,7 @@
 <template>
-
-    <div class="total">
-        <Head :title="title" />
-
-        <jet-banner />
-
-        <div class="min-h-screen ">
-     
-         <nav class="d-flex opacity-75 navbar navbar-expand-md navbar-dark bg-dark text-gray-200 sticky-top">
+    <div class="containerss">
+      
+                <nav class="d-flex opacity-75 navbar navbar-expand-md navbar-dark bg-dark text-gray-200 sticky-top">
                 <!-- Primary Navigation Menu -->
              <div class="container-fluid">
         <a class="navbar-brand" :href="route('main')" :active="route().current('main')">Home</a>
@@ -27,18 +21,15 @@
         <div class="collapse navbar-collapse" id="navbarColor02 ">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-           
-            </li>
-             <li class="nav-item">
               <a class="nav-link" :href="route('map')" :active="route().current('map')">Map</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" :href="route('chart')" :active="route().current('chart')">Chart</a>
             </li>
-           <li class="nav-item">
-              <a class="nav-link" :href="route('question')" :active="route().current('question')">Question</a>
-            </li>
            
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
       
           </ul>
           
@@ -259,29 +250,14 @@
                     </div>
                 </div>
             </nav>
-         
-
-            <!-- Page Heading -->
-            <header class="shadow"  v-if="$slots.header">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header"></slot>
-                </div>
-            </header>
-
-            <!-- Page Content -->
-            <main>
-                <slot></slot>
-            </main>
-
-            
-        </div>
-        
+             <img src="./../../img/title.png"  class="img1 mt-60" alt="">
     </div>
-
+                 <!-- <img src="./../../img/right.png"  class="img1 mt-60" alt=""> -->
 </template>
-
 <script>
-    import { defineComponent } from 'vue'
+
+    import AppLayout from "@/Layouts/AppLayout.vue";
+      import { defineComponent } from 'vue'
     import JetApplicationMark from '@/Jetstream/ApplicationMark.vue'
     import JetBanner from '@/Jetstream/Banner.vue'
     import JetDropdown from '@/Jetstream/Dropdown.vue'
@@ -291,13 +267,13 @@
     import { Head, Link } from '@inertiajs/inertia-vue3';
   
 
-    export default defineComponent({
-        props: {
-            title: String,
-        },
+    
+  
+    export default {
 
         components: {
-            Head,
+            AppLayout,
+              Head,
             JetApplicationMark,
             JetBanner,
             JetDropdown,
@@ -305,39 +281,31 @@
             JetNavLink,
             JetResponsiveNavLink,
             Link,
-        
-        },
-
-        data() {
-            return {
-                showingNavigationDropdown: false,
-            }
-        },
-
-        methods: {
-            switchToTeam(team) {
-                this.$inertia.put(route('current-team.update'), {
-                    'team_id': team.id
-                }, {
-                    preserveState: false
-                })
-            },
-
-            logout() {
-                this.$inertia.post(route('logout'));
-            },
+         
         }
-    })
-    
+    };
 </script>
 <style lang="scss">
-.total{
-       background-color: rgb(24, 26, 27);
-     
-}
-.shadow{
-      background-color: rgb(30, 32, 34);
-}
 
+    .containerss {
+        width: 1920px;
+        height: 1080px;
+         background: url("../../img/crime.jpg")  ;
+        animation: fade-in 5.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    }
+    .img{
+        position:absolute !important;
+        top: 900; left: 40;
+        z-index: -1;
+    }
 
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
 </style>

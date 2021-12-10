@@ -15,22 +15,19 @@
             <li class="list-group-item">제목 : {{ posts.title }}</li>
             <li class="list-group-item">내용 :{{ posts.content }}</li>
             <li class="list-group-item">등록일 :{{ posts.created_at }}</li>
-            <li class="list-group-item">수정일 : {{ posts.updated_at }}</li>
             <li class="list-group-item">작성자 : {{ posts.user_id }}</li>
             <li class="list-group-item">
               <div class="btn-group">
                 <a
                   :href="route('edit', { id: posts.id })"
-                  class="btn btn-warning"
+                  class="btn btn-warning mr-1"
                   method="get"
                   >수정하기</a
                 >
-                 <a
-                  :href="route('delete', { id: posts.id })"
-                  class="btn btn-warning"
-                  method="delete"
-                  >삭제하기</a
-                >
+                 
+
+                  <button class="btn btn-warning" @click.prevent="postDelete(posts.id)">삭제하기</button>
+            
               </div>
             </li>
             <div class="card" style="width: 30rem">
@@ -54,5 +51,13 @@ export default defineComponent({
     InertiaLink,
   },
   props: ["posts"],
+  methods:{
+  postDelete(id){
+    axios.delete("/post/delete/"+id).then().catch();
+  }
+  }
 });
 </script>
+
+
+
