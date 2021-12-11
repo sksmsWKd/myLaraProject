@@ -11,6 +11,15 @@ class ServiceController extends Controller
 {
     //
 
+
+    public function question()
+    {
+
+        $posts = Post::all();
+
+        return Inertia::render('Question', ['posts' => $posts]);
+    }
+
     public function index()
     {
 
@@ -27,7 +36,7 @@ class ServiceController extends Controller
 
         $b2018 = DB::table('crimes')->get();
         $t2018 = json_decode(json_encode($b2018), true);
-        // dd($t2018);
+        dd($t2018);
 
 
 
@@ -53,7 +62,8 @@ class ServiceController extends Controller
         $t2018 = json_decode(json_encode($b2018), true);
         // dd($t2018);
 
-        $posts = Post::all();
+        $posts = Post::latest()->get();
+
 
         return Inertia::render('Chart', ['age' => $t2018, 'posts' => $posts]);
     }

@@ -14,10 +14,10 @@ use Symfony\Component\Console\Input\Input;
 class PostController extends Controller
 {
 
-	public function index()
-	{
-		//
-	}
+	// public function index()
+	// {
+	// 	//
+	// }
 
 
 	public function create(Request $request)
@@ -39,7 +39,7 @@ class PostController extends Controller
 			'title' => 'required|min:3',
 			'content' => 'required|min:3',
 			'image' => 'image',
-			'region1' => 'required'
+			// 'region1' => 'required'
 
 
 		]);
@@ -57,10 +57,11 @@ class PostController extends Controller
 		$post->content = $request->content;
 
 
-		$path = $request->image->store('image', 'public');
+		$path = $request->file('image')->store('image', 'public');
 		$imgpath = "/storage/" . $path;
 		$post->image = $imgpath;
-		$post->region = $request->region1;
+
+		$post->region = $request->region;
 
 		$post->save();
 
@@ -114,8 +115,11 @@ class PostController extends Controller
 
 		// $region1 = $request->region1;
 
+		// $posts = Post::find($post->id);
 
-		return Redirect::route('dashboard');
+
+
+		return Redirect::route('main');
 	}
 
 
@@ -171,8 +175,6 @@ class PostController extends Controller
 	{
 		$post = Post::find($id);
 		$post->delete();
-
-		//게시글에 첨부된 이미지가 있으면 , 파일시스템에서도 삭제 해 줘야합니다.
 
 		if ($post->image) {
 			Storage::delete('public/images/' . $post->image);
