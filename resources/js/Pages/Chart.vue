@@ -13,10 +13,11 @@
         <div style="width:200px" class="text-gray-200 d-flex mx-auto">
             <select
                 id="selection"
-                @change="changes()"
+                @change="changes()"            
                 class="land"
-                
                 style="background-color: rgb(24, 26, 27)">
+                
+                <!-- @change로 selection 변경감지 -->
                 <option value="0">범죄발생총건수</option>
                 <option value="1">인구수 소계</option>
                 <option value="2">10만명당 범죄발생수</option>
@@ -32,7 +33,7 @@
                 <option value="29">형법범 과실범죄 소계</option>
                 <option value="30">기타형법범죄 소계</option>
             </select>
-            <!-- <button @click="applyChange()"> 변경 </button> -->
+          
 
             <select
                 id="crime"
@@ -69,7 +70,7 @@
         props: ['age','posts'],
 
         methods: {
-
+            // 차트 연도와 범죄데이터를받아 차트변경
             updateChartYearwithCrime(selectedYear, selectedCrime) {
                 switch (selectedYear) {
                     case "2014":
@@ -81,16 +82,18 @@
                     case "2018":
                     case "2019":
                         this.updateChartYear(selectedCrime, selectedYear);
+                        //차트 년도 변경
                         break;
                 }
                 this.myChart.options.plugins.title.text = selectedYear + "년도" +
                          "그래프";
+                         //title변경
                 this
                     .myChart
                     .update();
 
             },
-
+            //차트 데이터 변경 함수
             updateChartYear(selectedCrime, selectedYear) {
 
                 for (var i = 0; i < 17; i++) {
@@ -104,6 +107,7 @@
                 this
                     .myChart
                     .update();
+                    //업데이트 해야 차트가 변경됨.
             },
 
             //   applyChange(){   this.myChart.update();    },
@@ -118,7 +122,7 @@
 
                 console.log(selectedYear);
                 console.log(selectedCrime);
-
+                //선택창 데이터 받기
                 switch (selectedCrime) {
                     case "0":
                     case "1":       
@@ -143,7 +147,7 @@
                     .myChart
                     .update();
             },
-
+            //차트 선언 함수
             fillData() {
                 const ctx = document
                     .getElementById('chart')
@@ -167,6 +171,7 @@
                         }
                     },
                     data: {
+                        //데이터 명
                         labels: [
                             '서울',
                             '부산',
@@ -188,9 +193,9 @@
                         ],
                         datasets: [
                             {
-                                label: '# of Votes',
+                                label: '범죄자 수',
                                 data: [
-
+                                    //초기의 데이터 명
                                     this.age[0]["2019년 서울"],
                                     this.age[0]["2019년 부산"],
                                     this.age[0]["2019년 대구"],

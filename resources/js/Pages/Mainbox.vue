@@ -307,5 +307,7 @@
         100% {
             opacity: 1;
         }
+
+        //이미지 등장 animation
     }
 </style>

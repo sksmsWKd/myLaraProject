@@ -7,9 +7,9 @@
 
     <div class="container mt-5 text-gray-300 ">
       <form @submit.prevent="storePost" enctype="multipart/form-data">
- 
+       
           <input type="hidden" name="region77" id="region77" :value=this.region11>
-
+     <!-- 지역값 -->
         <div class="form-group">
           <label for="title">title</label>
           <input
@@ -89,6 +89,7 @@ export default {
         content: '',
         region: '',
     })
+    //form 을 이용하여 post 요청. axios 필요  x
 
     function storePost() {
       form.post('/post/store')

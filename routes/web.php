@@ -49,6 +49,8 @@ Route::get('/map1', function () {
     return Inertia::render('Map1');
 })->name('map1');
 
+
+// 게시판은 등록된 회원만,
 Route::middleware(['auth:sanctum', 'verified'])->post('/post/update/{id}', [PostController::class, 'update'])->name('update');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/post/edit/{id}', [PostController::class, 'edit'])->name('edit');

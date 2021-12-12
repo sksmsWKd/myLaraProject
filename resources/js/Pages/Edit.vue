@@ -92,6 +92,8 @@ export default defineComponent({
       this.form.post(route("update",{id:this.post.id}), {
         id: this.post.id,
       });
+      // form.post 시 앞의 {} -> 라우팅파라미터
+      // 두번째 {} -> 보낼 데이터
     },
   },
   setup() {

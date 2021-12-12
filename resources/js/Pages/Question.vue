@@ -7,7 +7,7 @@
         </template>
 
                 <div id="info-box"></div>
-
+                <!-- svg viewbox 필수. svg이미지를 투시가능한 창문같은느낌?? -->
                 <div class="d-flex pr-3">
                     <svg
                         version="1.1"
@@ -753,6 +753,7 @@ PostPage
          $("g")
                 .mouseover(function (event) {
                     var _path = event.target;
+                    //해당 지역 마우스 오버시,
                     var city_name = _path.id;
                     var province = $(_path)
                         .parent()[0]
@@ -784,6 +785,8 @@ PostPage
                         document
                             .getElementById('info-box')
                             .innerHTML = this.getAttribute("title")
+
+                            //title안에 지역이름 값 받아옴
                     });
                     item.addEventListener('mouseleave', function () {
                         $('#info-box').css('display', 'none');
@@ -793,6 +796,7 @@ PostPage
                 .mousemove(function (e) {
                     $('#info-box').css('top', e.pageY - 100);
                     $('#info-box').css('left', e.pageX - ($('#info-box').width()) / 2 - 30);
+                    //적당한 위치 지정
                 })
                 .mouseover();
     }

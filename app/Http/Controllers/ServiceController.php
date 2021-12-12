@@ -36,6 +36,7 @@ class ServiceController extends Controller
 
         $b2018 = DB::table('crimes')->get();
         $t2018 = json_decode(json_encode($b2018), true);
+        //json
         dd($t2018);
 
 

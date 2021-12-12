@@ -115,7 +115,7 @@
                         .getElementById('year')
                         .value;
                   
-
+                        //지역과 년도 선택
                         console.log(selectedCrime);
                     let arr2 = [];
 
@@ -155,6 +155,7 @@
                                         strokeWeight: 2,
                                         strokeOpacity: 0.4,
                                         fillColor: '#ff0000'
+                                        //지도 스타일 변경()
                                     });
                                 console.log(color);
                             }
@@ -297,7 +298,8 @@
             mounted() {
 
                 this.crimeDatas = this.crimeData;
-
+                    //mapOptions 는, 지도의 기본 옵션값
+                    // 중심위치, 줌높이, 줌패널 등등을 설정가능
                 const mapOptions = {
                     center: new naver
                         .maps
@@ -318,6 +320,7 @@
                     .map
                     .data
                     .addGeoJson(geojsonfile);
+                    //shp->geojson 하여 적용
 
                 this
                     .map
@@ -325,6 +328,7 @@
                     .setStyle(
                         {fillColor: '#ff0000', fillOpacity: 0.0001, strokeColor: '#ff0000', strokeWeight: 2, strokeOpacity: 0.4}
                     );
+                    //스타일 기본값
 
                 // this.map.data._features[0].DEFAULT_OVERLAY_STYLE.fillColor="#FF0099";
                 // this.map.data._features[0]._overlays[0].fillColor="FF0099"
@@ -336,6 +340,7 @@
                     'fff;border:solid 2px #000;font-size:14px;pointer-events:none;display:none;"></' +
                     'div>'
                 );
+                //지도위의 툴팁
 
                 tooltip.appendTo(this.map.getPanes().floatPane);
                 // MapPanes 객체는 오버레이를 지도 위에 렌더링할 수 있는 DOM 요소를 포함하며, 지도에 있는 여러 레이어의 스택(stack) 순서를
@@ -345,6 +350,8 @@
                     .maps
                     .InfoWindow({content: "로딩 중입니다"});
 
+                    //지도마다 1개의 정보창 생성가능
+
                 this
                     .map
                     .data
@@ -353,7 +360,8 @@
                             .map
                             .setCursor("pointer");
                         if (e.feature.getProperty('CTP_KOR_NM') == '서울특별시') {
-                            alert('서울');
+                            //geojson 의 property 값이 ->지역
+                            // alert('서울');
                             console.log(this.map.data);
                             this
                                 .map
@@ -640,6 +648,7 @@
 
                         if (infowindow.getMap()) {
                             infowindow.close();
+                            //종료
                         } else {
 
                             infowindow.DEFAULT_OPTIONS.position = point;
@@ -669,6 +678,8 @@
                         tooltip
                             .hide()
                             .empty();
+                            //툴팁 닫음
+
                         // this
                         //     .map
                         //     .data

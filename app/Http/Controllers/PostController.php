@@ -56,6 +56,12 @@ class PostController extends Controller
 		$post->title = $request->title;
 		$post->content = $request->content;
 
+		//inertia 에서의 post요청
+
+		//function storePost() {
+		//form.post('/post/store')
+		//}
+		//와 같이.
 
 		$path = $request->file('image')->store('image', 'public');
 		$imgpath = "/storage/" . $path;
