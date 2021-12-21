@@ -4,7 +4,8 @@
         <template #header class="text-gray-200">
             <div class="inline-block ">
             <h2 class="font-semibold text-xl text-gray-200 mr-20 leading-tight ">
-               Crime data on the map
+               Crime data on the map 
+          
             </h2>
             </div>
                     <!--#40E0D0 #FF8C00 #FF0080 -->
@@ -49,11 +50,18 @@
                 alt=""
                 style="z-index: -99999; height: 200px ;width:20px;"></div>
 
+
+    
         </app-layout>
 
 </template>
     <script>
-        import geojsonfile from "./geojsonfile";
+   
+
+
+
+
+      import geojsonfile from "./geojsonfile";
         import AppLayout from "@/Layouts/AppLayout.vue";
         export default {
             components: {
@@ -62,12 +70,17 @@
             props: ['crimeData'],
 
             data() {
-                return {crimeDatas: ""}
+                return {crimeDatas: "",
+                test:"",}
             },
 
             methods: {
-              
-
+            
+     canMapSelectionShowsConsolelog(){
+          //만약 데이터 가져오려면 infowindow창의 글씨게 하얗게->>vue의 data등에서 가져온 데이터로 id를 짓되,
+          //단순 html코드로 짜면 인식 안됨....
+             console.log("지도안 선택데이터 가져오기성공");
+     },
                 changes() {
                     let arr1 = [
                         1,
@@ -296,6 +309,8 @@
                 }
             },
             mounted() {
+
+  
 
                 this.crimeDatas = this.crimeData;
                     //mapOptions 는, 지도의 기본 옵션값
@@ -640,6 +655,13 @@
                                     ' 명<br />',
                             '       <br />',
                             '       <br />',
+                          '<select id="job" onchange="' + this.canMapSelectionShowsConsolelog() +'">',
+    '<option value="">직업선택</option>',
+   '<option value="학생">학생</option>',
+    '<option value="회사원" selected="selected">회사원</option>',
+    '<option value="기타">기타</option>',
+'</select>',
+
                             '   </p>',
                             '</div>'
                         ].join(''));
@@ -685,7 +707,7 @@
                         //     .data
                         //     .revertStyle();
                         //스타일원래대로
-                        infowindow.close();
+                        // infowindow.close();
                     });
 
             }
