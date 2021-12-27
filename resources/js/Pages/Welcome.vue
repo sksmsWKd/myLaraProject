@@ -193,4 +193,17 @@
             phpVersion: String,
         }
     })
+
+         
+
+        // var i = 0;
+        // //App\Events\SendMessage에 정의되어있는 수신받을 채널명.
+        // window.Echo.channel('laravel_database_slsl')
+        // //수신받을 클래스 명.
+        //  .listen('SendMessage', (data) => {
+        //     i++;
+        //     $("#notification").append('<div class="alert alert-success">'+i+'.'+data.title+'</div>');
+        // 	console.log(data);
+        // });
+   
 </script>
