@@ -42,7 +42,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-
+Route::get('/t', function () {
+    event(new \App\Events\SendMessage());
+    dd('Event Run Successfully.');
+});
 
 
 Route::get('/map1', function () {
