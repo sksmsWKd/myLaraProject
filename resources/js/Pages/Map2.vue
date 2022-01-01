@@ -43,15 +43,46 @@
  </div>
            
         </template>
-        <div id="map" class="mx-auto mt-3" style="width: 80%; height: 700px; z-index: 2;">
-            <img
-                src="../../img/gradient.png"
-                id="img"
-                alt=""
-                style="z-index: -99999; height: 200px ;width:20px;"></div>
+
+        <div id="map" class="mx-auto mt-3" style="width: 80%; height: 700px;">
+              
+                    <input id="test" type="text" placeholder="test">
+                
+                </div>
 
 
-    
+    <table class="table table-striped table-dark m-5">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">지역</th>
+      <th scope="col">범죄종류</th>
+      <th scope="col">소계</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+
         </app-layout>
 
 </template>
@@ -706,14 +737,14 @@
                         //     .map
                         //     .data
                         //     .revertStyle();
-                        //스타일원래대로
-                        // infowindow.close();
+                        // 스타일원래대로
+                        infowindow.close();
                     });
 
             }
         }
     </script>
-    <style lang="scss">
+<style lang="scss">
         .img {
             z-index: -2 !important;
             position: absolute;
@@ -723,4 +754,11 @@
         #img {
             z-index: 2 !important;
         }
-    </style>
+        #test {
+  position:absolute;
+  top:0;
+  left:0;
+  padding:5px;
+  z-index:10;
+}
+</style>
