@@ -17,6 +17,8 @@ use Inertia\Inertia;
 |
 */
 
+Route::get('/datatest', [ServiceController::class, 'dataTest'])->name('chart');
+
 
 Route::get('/chart', [ServiceController::class, 'chart'])->name('chart');
 

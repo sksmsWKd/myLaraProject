@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Inertia\Inertia;
 
 class ServiceController extends Controller
@@ -79,5 +80,26 @@ class ServiceController extends Controller
 
 
         return Inertia::render('Map2', ['crimeData' => $crimeData]);
+    }
+
+    public function dataTest()
+    {
+        $testData = Http::get('https://www.crimestats.or.kr/openapi/Sttsapitbldata.do?STATBL_ID=T187583000501945&DTACYCLE_CD=YY&WRTTIME_IDTFR_ID=2017?STATBL_ID=T183153017304927&DTACYCLE_CD=YY&WRTTIME_IDTFR_ID=2019&ITM_ID=10003&CLS_ID=50003');
+
+        $xmlData = simplexml_load_string($testData);
+        //simplexml_load_string()은 SimpleXMLElement 개체에 잘 구성된 XML 문자열의 형태로 변환
+        $jsonData = json_encode($xmlData);
+
+        // dd($jsonData);
+
+        $arrayData = json_decode($jsonData, TRUE);
+
+        // dd($arrayData['body']['items']);
+        dd($arrayData);
+
+        //https://www.crimestats.or.kr/portal/openapi/selectServicePage.do
+        //api주소
+
+        //https://getbootstrap.com/docs/4.0/content/tables/ table참조
     }
 }
