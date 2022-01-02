@@ -54,31 +54,24 @@
     <table class="table table-striped table-dark m-5">
   <thead>
     <tr>
-      <th scope="col"></th>
+      <th scope="col">{{ tableYear }}</th>
       <th scope="col">지역</th>
-      <th scope="col">범죄종류</th>
       <th scope="col">소계</th>
     </tr>
   </thead>
+
+
   <tbody>
-    <tr>
+    <tr v-for="cityName in this.namelist">
       <th scope="row"></th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      
+      <td >{{ cityName }}</td>
+      
+      <td>{{ this.crimeDatas[this.tableType][this.tableYear+cityName] }} 명</td>
+   
     </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+  
+ 
   </tbody>
 </table>
 
@@ -101,8 +94,13 @@
             props: ['crimeData'],
 
             data() {
-                return {crimeDatas: "",
-                test:"",}
+                return {
+                crimeDatas: "",
+                test:"",
+                namelist :"",
+                tableYear:"2014년 ",
+                tableType:"4", 
+                    }
             },
 
             methods: {
@@ -113,6 +111,10 @@
              console.log("지도안 선택데이터 가져오기성공");
      },
                 changes() {
+
+                   
+
+
                     let arr1 = [
                         1,
                         2,
@@ -159,6 +161,8 @@
                         .getElementById('year')
                         .value;
                   
+                   this.tableYear=selectedYear+"년 ";
+                   console.log(this.tableYear);
                         //지역과 년도 선택
                         console.log(selectedCrime);
                     let arr2 = [];
@@ -188,7 +192,7 @@
                     switch (selectedCrime) {
 
                         case "4":
-                          
+                            this.tableType="4";
                             for (let i = 0; i < namelist.length; i++) {
                                 let color = 0.00001 * arr2[i];
                                 this
@@ -207,7 +211,7 @@
                             break;
 
                         case "11":
-                           
+                           this.tableType="11";
                             for (let i = 0; i < namelist.length; i++) {
                                 let color = 0.00035 * arr2[i];
                                 this
@@ -224,7 +228,7 @@
                             break;
 
                         case "12":
-                           
+                           this.tableType="12";
                             for (let i = 0; i < namelist.length; i++) {
                                 let color = 0.01 * arr2[i];
                                 this
@@ -241,6 +245,7 @@
                             break;
 
                             case "25":
+                                this.tableType="25";
  for (let i = 0; i < namelist.length; i++) {
                                 let color = 0.0001 * arr2[i];
                                 this
@@ -257,6 +262,7 @@
                             break;
 
                             case "26":
+                                  this.tableType="26";
  for (let i = 0; i < namelist.length; i++) {
                                 let color = 0.001 * arr2[i];
                                 this
@@ -273,6 +279,7 @@
                             break;
 
                             case "27":
+                                  this.tableType="27";
  for (let i = 0; i < namelist.length; i++) {
                                 let color = 0.0005 * arr2[i];
                                 this
@@ -289,6 +296,7 @@
                             break;
 
                             case "28":
+                                 this.tableType="28";
  for (let i = 0; i < namelist.length; i++) {
                                 let color = 0.00001 * arr2[i];
                                 this
@@ -305,6 +313,7 @@
                             break;
 
                             case "29":
+                                 this.tableType="29";
  for (let i = 0; i < namelist.length; i++) {
                                 let color = 0.0005 * arr2[i];
                                 this
@@ -321,6 +330,7 @@
                             break;
 
                             case "30":
+                                 this.tableType="30";
  for (let i = 0; i < namelist.length; i++) {
                                 let color = 0.0001 * arr2[i];
                                 this
@@ -341,8 +351,27 @@
             },
             mounted() {
 
-  
-
+                this.tableYear="2014년 ";
+                this.tableType="4";
+                this.namelist = [
+                        '강원',
+                        '경기',
+                        '경남',
+                        '경북',
+                        '광주',
+                        '대구',
+                        '대전',
+                        '부산',
+                        '서울',
+                        '세종',
+                        '울산',
+                        '인천',
+                        '전남',
+                        '전북',
+                        '제주',
+                        '충남',
+                        '충북'
+                    ];
                 this.crimeDatas = this.crimeData;
                     //mapOptions 는, 지도의 기본 옵션값
                     // 중심위치, 줌높이, 줌패널 등등을 설정가능

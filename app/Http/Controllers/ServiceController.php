@@ -76,7 +76,7 @@ class ServiceController extends Controller
         $b2018 = DB::table('crimes')->get();
         $crimeData = json_decode(json_encode($b2018), true);
 
-
+        // dd($crimeData);
 
 
         return Inertia::render('Map2', ['crimeData' => $crimeData]);
@@ -84,9 +84,14 @@ class ServiceController extends Controller
 
     public function dataTest()
     {
-        $testData = Http::get('https://www.crimestats.or.kr/openapi/Sttsapitbldata.do?STATBL_ID=T187583000501945&DTACYCLE_CD=YY&WRTTIME_IDTFR_ID=2017?STATBL_ID=T183153017304927&DTACYCLE_CD=YY&WRTTIME_IDTFR_ID=2019&ITM_ID=10003&CLS_ID=50003');
+        // $testData = Http::get('https://www.crimestats.or.kr/openapi/Sttsapitbldata.do?STATBL_ID=T187583000501945&DTACYCLE_CD=YY&WRTTIME_IDTFR_ID=2017?STATBL_ID=T183153017304927&DTACYCLE_CD=YY&WRTTIME_IDTFR_ID=2019&ITM_ID=10003&CLS_ID=50003');
+
+        $testData = Http::get('https://www.crimestats.or.kr/openapi/Sttsapitbldata.do?STATBL_ID=T187583000501945&DTACYCLE_CD=YY&WRTTIME_IDTFR_ID=2017?STATBL_ID=T187583017578361&ITM_ID=10001&CLS_ID=50003');
+
+
 
         $xmlData = simplexml_load_string($testData);
+
         //simplexml_load_string()은 SimpleXMLElement 개체에 잘 구성된 XML 문자열의 형태로 변환
         $jsonData = json_encode($xmlData);
 
@@ -101,5 +106,7 @@ class ServiceController extends Controller
         //api주소
 
         //https://getbootstrap.com/docs/4.0/content/tables/ table참조
+
+        //질문한것 답변참고, 데이터가 5줄밖에없다.
     }
 }
