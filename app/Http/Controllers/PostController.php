@@ -187,6 +187,6 @@ class PostController extends Controller
 			Storage::delete('public/images/' . $post->image);
 		}
 
-		return Redirect::route('dashboard');
+		return Inertia::render('question');
 	}
 }

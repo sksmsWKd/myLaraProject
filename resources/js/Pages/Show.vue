@@ -26,7 +26,7 @@
                 >
                  
 
-                  <button class="btn btn-warning" @click.prevent="postDelete(posts.id)">삭제하기</button>
+                  <button id="dbtn" class="btn btn-warning" @click.prevent="postDelete(posts.id)">삭제하기</button>
             
               </div>
             </li>
@@ -53,7 +53,16 @@ export default defineComponent({
   props: ["posts"],
   methods:{
   postDelete(id){
-    axios.delete("/post/delete/"+id).then().catch();
+     
+    axios.delete("/post/delete/"+id,{ 
+      preserveScroll: true,
+        onSuccess: () => this.form.reset()
+        }).then().catch();
+        $('#dbtn').click(function() {
+        $(this).attr('disabled','disabled');
+        location.replace('/question')
+});
+
   }
   }
 });

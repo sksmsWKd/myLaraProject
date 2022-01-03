@@ -92,7 +92,12 @@ export default {
     //form 을 이용하여 post 요청. axios 필요  x
 
     function storePost() {
-      form.post('/post/store')
+       if (this.form.processing) {
+            return false
+        }
+      form.post('/post/store',{
+       preserveScroll: true,
+        onSuccess: () => this.form.reset()});
     }
 
     return { form, storePost }
