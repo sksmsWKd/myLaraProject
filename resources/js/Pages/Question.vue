@@ -735,7 +735,7 @@
                     </div>
                     
                 </div>
-
+                <!-- dArray 정보를 이용하여, 지역별 pg구현 -->
  
 </app-layout>
 </template>
@@ -748,8 +748,9 @@ export default {
 AppLayout,
 PostPage
     },
-    props:['posts'],
+    props:['posts','dArray'],
     mounted(){
+        console.log(this.dArray + "지역별게시글정보");
          $("g")
                 .mouseover(function (event) {
                     var _path = event.target;

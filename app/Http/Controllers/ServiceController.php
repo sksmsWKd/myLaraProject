@@ -18,7 +18,19 @@ class ServiceController extends Controller
 
         $posts = Post::all();
 
-        return Inertia::render('Question', ['posts' => $posts]);
+        $dArray = [];
+        for ($i = 0; $i <= 15; $i++) {
+
+            ${"post" . $i} = DB::table('posts')->select()->where('region', $i)->paginate(5);
+            array_push($dArray, ${"post" . $i});
+        }
+
+        //php 에서 문자열 더하기는 . 이용
+        //유동적 변수 생성시 {} 안에 "이름".$변수 사용.
+
+        // dd($dArray);
+
+        return Inertia::render('Question', ['posts' => $posts, 'dArray' => $dArray]);
     }
 
     public function index()
