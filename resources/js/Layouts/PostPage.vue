@@ -1,6 +1,11 @@
 <template>
-
+   
     <br/>
+    <pagination
+        @pageClicked="getPage($event)"
+        v-if="this.getdArray.data != null"
+        :links="this.getdArray.links"
+      />
  <a
         :href="route('create',{region1:this.region})"
         class="list-group-item list-group-item-action w-25 float-right text-gray-200 align-text-bottom"
@@ -8,10 +13,11 @@
          >
         
         글작성
-
+         
+ <!-- {{ this.getdArray }} -->
     </a>
 
-    <div v-for="post in this.postRegion" :key="post.id">
+    <div v-for="post in this.getdArray.data" :key="post.id">
 
         <a
             :href="route('show',{'id': post.id},{region1:this.region})"
@@ -25,14 +31,10 @@
 
     </div>
 
-   
-     <!-- <pagination
-     class="d-block float-right"
-        v-if="this.getposts.links"
-       @click="check"   
-        :links="this.getposts.links"
-      ></pagination> -->
+  
 
+  
+ 
       
 </template>
 <script>
@@ -40,24 +42,42 @@
     import {InertiaLink} from "@inertiajs/inertia-vue3";
     import Pagination from "./Pagination.vue";
     export default {
-
+data(){
+return{
+    postdata: []
+}
+},
         methods: {
             check(){
                 console.log(this.postRegion);
-            }
+            },
+             getPage(url) {
+      axios
+        .get(url)
+        .then((res) => {
+           this.getdArray = res.data.dArray[0];
+        
+      
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
         },
         props: [
-            'regionN', 'posts'
+            'regionN', 'posts','dArray'
         ],
         data() {
-            return {region: "", getposts: []}
+            return {region: "", getposts: [],getdArray:[]}
         },
         beforeMount() {
             this.region = this.regionN;
             this.getposts = this.posts;
+            this.getdArray=this.dArray;
             // console.log(this.getposts);
             console.log(this.region);
              console.log(this.getposts);
+             console.log(this.getdArray);
         },
         components: {
             InertiaLink,

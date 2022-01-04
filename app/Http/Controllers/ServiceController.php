@@ -98,7 +98,7 @@ class ServiceController extends Controller
     {
         // $testData = Http::get('https://www.crimestats.or.kr/openapi/Sttsapitbldata.do?STATBL_ID=T187583000501945&DTACYCLE_CD=YY&WRTTIME_IDTFR_ID=2017?STATBL_ID=T183153017304927&DTACYCLE_CD=YY&WRTTIME_IDTFR_ID=2019&ITM_ID=10003&CLS_ID=50003');
 
-        $testData = Http::get('https://www.crimestats.or.kr/openapi/Sttsapitbldata.do?STATBL_ID=T187583000501945&DTACYCLE_CD=YY&WRTTIME_IDTFR_ID=2017?STATBL_ID=T187583017578361&ITM_ID=10001&CLS_ID=50003');
+        $testData = Http::get('https://www.crimestats.or.kr/openapi/Sttsapitbldata.do?STATBL_ID=T187583017578361&DTACYCLE_CD=YY&WRTTIME_IDTFR_ID=2017?STATBL_ID=T187583017578361&ITM_ID=10001&CLS_ID=50003');
 
 
 

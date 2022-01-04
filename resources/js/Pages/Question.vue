@@ -44,9 +44,10 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right overflow-hidden">
-                        <PostPage regionN="0" :posts="posts"></PostPage>
+                        <PostPage regionN="0" :posts="posts" :dArray="dArray[0]"></PostPage>
                     </div>
 
+                    
                 </div>
 
                 <div class="d-flex pr-3">
@@ -81,7 +82,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="1" :posts="posts"></PostPage>
+                        <PostPage regionN="1" :posts="posts" :dArray="dArray[1]"></PostPage>
                     </div>
                 </div>
 
@@ -135,7 +136,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="2" :posts="posts"></PostPage>
+                        <PostPage regionN="2" :posts="posts" :dArray="dArray[2]"></PostPage>
                     </div>
                 </div>
 
@@ -186,7 +187,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="3" :posts="posts"></PostPage>
+                        <PostPage regionN="3" :posts="posts" :dArray="dArray[3]"></PostPage>
                     </div>
                 </div>
 
@@ -239,7 +240,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="4" :posts="posts"></PostPage>
+                        <PostPage regionN="4" :posts="posts" :dArray="dArray[4]"></PostPage>
                     </div>
                 </div>
 
@@ -289,7 +290,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="5" :posts="posts"></PostPage>
+                        <PostPage regionN="5" :posts="posts" :dArray="dArray[5]"></PostPage>
                     </div>
                 </div>
 
@@ -326,7 +327,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="6" :posts="posts"></PostPage>
+                        <PostPage regionN="6" :posts="posts" :dArray="dArray[6]"></PostPage>
                     </div>
                 </div>
 
@@ -363,7 +364,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="7" :posts="posts"></PostPage>
+                        <PostPage regionN="7" :posts="posts" :dArray="dArray[7]"></PostPage>
                     </div>
                 </div>
 
@@ -401,7 +402,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="8" :posts="posts"></PostPage>
+                        <PostPage regionN="8" :posts="posts" :dArray="dArray[8]"></PostPage>
                     </div>
                 </div>
 
@@ -452,7 +453,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="9" :posts="posts"></PostPage>
+                        <PostPage regionN="9" :posts="posts" :dArray="dArray[9]"></PostPage>
                     </div>
                 </div>
 
@@ -505,7 +506,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="10" :posts="posts"></PostPage>
+                        <PostPage regionN="10" :posts="posts" :dArray="dArray[10]"></PostPage>
                     </div>
                 </div>
 
@@ -544,7 +545,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="11" :posts="posts"></PostPage>
+                        <PostPage regionN="11" :posts="posts" :dArray="dArray[11]"></PostPage>
                     </div>
                 </div>
 
@@ -581,7 +582,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="12" :posts="posts"></PostPage>
+                        <PostPage regionN="12" :posts="posts" :dArray="dArray[12]"></PostPage>
                     </div>
                 </div>
 
@@ -618,7 +619,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="13" :posts="posts"></PostPage>
+                        <PostPage regionN="13" :posts="posts" :dArray="dArray[13]"></PostPage>
                     </div>
                 </div>
 
@@ -668,7 +669,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="14" :posts="posts"></PostPage>
+                        <PostPage regionN="14" :posts="posts" :dArray="dArray[14]"></PostPage>
                     </div>
                 </div>
 
@@ -731,7 +732,7 @@
                         </g>
                     </svg>
                     <div class="flex-fill text-right">
-                        <PostPage regionN="15" :posts="posts"></PostPage>
+                        <PostPage regionN="15" :posts="posts" :dArray="dArray[15]"></PostPage>
                     </div>
                     
                 </div>
@@ -746,9 +747,22 @@
 export default {
     components:{
 AppLayout,
-PostPage
+PostPage,
+
     },
     props:['posts','dArray'],
+    methods:{
+         getPage(url) {
+      axios
+        .get(url)
+        .then((res) => {
+          this.comments = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    },
     mounted(){
         console.log(this.dArray + "지역별게시글정보");
          $("g")
